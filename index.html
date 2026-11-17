@@ -485,12 +485,21 @@ body.letter-open .letter-cover{
 // Fungsi membuka amplop anniversary
 const openLetterBtn = document.getElementById('openLetter');
 const envelope = document.getElementById('envelope');
+const musicBtn = document.getElementById('musicBtn');
 
-openLetterBtn.addEventListener('click', () => {
+openLetterBtn.addEventListener('click', async () => {
   envelope.classList.add('opening');
 
   openLetterBtn.disabled = true;
   openLetterBtn.textContent = '♡ With all my love ♡';
+
+  try {
+    await anniversaryAudio.play();
+    musicBtn.textContent = 'Ⅱ Jeda musik';
+  } catch (error) {
+    musicBtn.textContent = '♫ Putar musik';
+    console.error('Audio tidak dapat diputar:', error);
+  }
 
   setTimeout(() => {
     document.body.classList.add('letter-open');
