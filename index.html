@@ -880,6 +880,22 @@ secretLetterBtn.addEventListener('click', () => {
 closeSecretLetter.addEventListener('click', () => {
   secretLetterModal.classList.remove('show');
 });
+
+  // Animasi tulisan penutup saat terlihat di layar
+const closingSection = document.querySelector('.closing');
+
+const closingObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      closingSection.classList.add('show-closing');
+      closingObserver.unobserve(closingSection);
+    }
+  });
+}, {
+  threshold: 0.3
+});
+
+closingObserver.observe(closingSection);
 </script>
 </body>
 </html>
