@@ -284,7 +284,180 @@ body.letter-open .letter-cover{
   opacity:0;
   transition:opacity .3s ease;
 }
-    
+    /* Tombol surat cinta rahasia */
+.secret-letter-section{
+  padding:80px 20px;
+  text-align:center;
+  background:linear-gradient(180deg,#08172d,#102746);
+}
+
+.secret-envelope{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  width:210px;
+  min-height:125px;
+  margin:30px auto 15px;
+  border:1px solid #f3dfaa;
+  border-radius:12px;
+  background:linear-gradient(145deg,#f3dfaa,#c49a52);
+  color:#08172d;
+  font:12px Arial,sans-serif;
+  letter-spacing:2px;
+  cursor:pointer;
+  box-shadow:0 8px 28px #d8b56d33;
+  transition:transform .3s ease,box-shadow .3s ease;
+}
+
+.secret-envelope:hover{
+  transform:translateY(-5px);
+  box-shadow:0 12px 35px #d8b56d66;
+}
+
+.envelope-icon{
+  font-size:42px;
+}
+
+.secret-caption{
+  color:#d8b56d;
+  font:italic 14px Georgia,serif;
+}
+    /* Tampilan surat cinta rahasia */
+.secret-letter-modal{
+  position:fixed;
+  inset:0;
+  z-index:30;
+  display:none;
+  place-items:center;
+  padding:18px;
+  background:#020b18ee;
+  overflow-y:auto;
+}
+
+.secret-letter-modal.show{
+  display:grid;
+  animation:pageReveal .8s ease both;
+}
+
+.secret-letter-paper{
+  position:relative;
+  width:min(680px,100%);
+  max-height:88vh;
+  overflow-y:auto;
+  padding:45px 30px;
+  background:linear-gradient(145deg,#fffdf5,#f5ead3);
+  color:#24364b;
+  border:2px solid #d8b56d;
+  box-shadow:0 0 35px #d8b56d55;
+}
+
+.close-secret-letter{
+  position:sticky;
+  float:right;
+  top:0;
+  border:1px solid #b99452;
+  background:transparent;
+  color:#8b6b35;
+  font-size:28px;
+  width:38px;
+  height:38px;
+  cursor:pointer;
+  z-index:3;
+}
+
+.secret-letter-content{
+  position:relative;
+  z-index:1;
+}
+
+.letter-heading{
+  text-align:center;
+  color:#a48245;
+  font:11px Arial,sans-serif;
+  letter-spacing:4px;
+  margin:25px 0 30px;
+}
+
+.secret-letter-content h2{
+  color:#8b6b35;
+  font-style:italic;
+  font-size:29px;
+  margin-bottom:25px;
+}
+
+.letter-body{
+  font:16px/1.9 Georgia,serif;
+  color:#344258;
+  text-align:left;
+}
+
+.letter-body p{
+  margin:0 0 22px;
+}
+
+.secret-final-message{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  text-align:center;
+  margin-top:45px;
+  padding:30px 10px;
+  border-top:1px solid #d8b56d;
+  color:#9a7840;
+  font-family:Georgia,serif;
+}
+
+.secret-final-message span{
+  font-size:18px;
+  font-style:italic;
+}
+
+.secret-final-message strong{
+  font-size:29px;
+  font-weight:400;
+  font-style:italic;
+  color:#9b7131;
+}
+
+.secret-final-message strong:last-child{
+  font-size:34px;
+}
+
+/* Bintang khusus di dalam surat */
+.secret-stars{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+}
+
+.secret-star{
+  position:absolute;
+  color:#c49a52;
+  animation:secretTwinkle 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes secretTwinkle{
+  from{opacity:.15;transform:scale(.7)}
+  to{opacity:.9;transform:scale(1.3)}
+}
+
+@media(max-width:600px){
+  .secret-letter-paper{
+    padding:35px 22px;
+  }
+
+  .letter-body{
+    font-size:15px;
+  }
+
+  .secret-final-message strong{
+    font-size:25px;
+  }
+}
   </style>
 </head>
   
@@ -377,7 +550,62 @@ body.letter-open .letter-cover{
         <p class="gallery-note">Foto ini hanya satu per sejuta kenangan indah dan seru kita, tersimpan dalam satu cerita. ♡</p>
       </div>
     </section>
+<section class="secret-letter-section">
+  <div class="section-head">
+    <span class="eyebrow">A little surprise for you</span>
+    <h2>A Secret Letter</h2>
+    <p>There's something special I want you to read...</p>
+  </div>
 
+  <button class="secret-envelope" id="openSecretLetter">
+    <span class="envelope-icon">✉</span>
+    <span>OPEN MY SECRET LETTER</span>
+  </button>
+
+  <p class="secret-caption">A special letter, just for Muel ♡</p>
+</section>
+    <div class="secret-letter-modal" id="secretLetterModal">
+  <div class="secret-letter-paper">
+    <button class="close-secret-letter" id="closeSecretLetter">×</button>
+
+    <div class="secret-stars" id="secretStars"></div>
+
+    <div class="secret-letter-content">
+      <div class="letter-heading">A LETTER FROM MY HEART</div>
+      <h2>To My Husband :</h2>
+
+      <div class="letter-body">
+        <p>If you ask me why I chose you, and honestly, the answer is simple: because nothing in my life has ever felt more real than you.</p>
+
+        <p>At first, I fell in love with you so fast and so hard that I was almost scared, worried it was all too good to be true. But now? I know I want to fall in love with you even more.</p>
+
+        <p>Muel, you are my favorite person, and I still get butterflies when you take my hand. Being with you feels like coming home after a long, exhausting day.</p>
+
+        <p>You are where my heart finds peace, my safe place, and my answered prayer. I've never felt so loved, safe, and comfortable with anyone the way I do with you.</p>
+
+        <p>I love that you make me laugh, and that you know me so well. Loving you wasn't planned or logical, it just happened naturally, like breathing, and from that moment on, there was no turning back.</p>
+
+        <p>Every night, before I fall asleep, I pray the same prayer: Thank you Jesus, for showing me how deeply You love me by sending me a man who loves me so purely, and I believe You will always take care of Muel, the man who spends his life taking care of me.</p>
+
+        <p>Thank you for every sacrifice no one sees, every burden you carry in silence, and every time you choose our family over yourself.</p>
+
+        <p>I love the life and family we've built together. I want all the adventures, the big dreams, the ordinary days, and all the sunrises and sunsets in between. I want to keep growing with you, dreaming with you, and figuring out what this next chapter looks like together.</p>
+
+        <p>You brought smiles back into my life, and I'm so glad to be stuck with you. Even after all these years, I still want more life with you.</p>
+
+        <p>May God strengthen your heart, protect every step you take, and fill your life with peace and endless blessings. Amen 💖</p>
+
+        <p>Thank you for everything.</p>
+      </div>
+
+      <div class="secret-final-message">
+        <span>Thank you for everything.</span>
+        <strong>I choose you.</strong>
+        <strong>Still. Always. 💖</strong>
+      </div>
+    </div>
+  </div>
+    </div>
     <section class="closing">
       <div class="eyebrow">With all my love</div><div class="ornament">✦</div>
       <h2>Masih kamu. Selalu kamu.</h2>
@@ -506,6 +734,33 @@ openLetterBtn.addEventListener('click', async () => {
   setTimeout(() => {
     document.body.classList.add('letter-open');
   }, 1800);
+});
+  
+  // Fungsi membuka surat cinta rahasia
+const secretLetterBtn = document.getElementById('openSecretLetter');
+const secretLetterModal = document.getElementById('secretLetterModal');
+const closeSecretLetter = document.getElementById('closeSecretLetter');
+const secretStars = document.getElementById('secretStars');
+
+secretLetterBtn.addEventListener('click', () => {
+  secretLetterModal.classList.add('show');
+
+  if (secretStars.children.length === 0) {
+    for (let i = 0; i < 35; i++) {
+      const star = document.createElement('span');
+      star.className = 'secret-star';
+      star.textContent = '✦';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.fontSize = (8 + Math.random() * 12) + 'px';
+      star.style.animationDelay = Math.random() * 3 + 's';
+      secretStars.appendChild(star);
+    }
+  }
+});
+
+closeSecretLetter.addEventListener('click', () => {
+  secretLetterModal.classList.remove('show');
 });
 </script>
 </body>
