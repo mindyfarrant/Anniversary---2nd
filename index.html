@@ -45,6 +45,29 @@
     opacity:0;
   }
 }
+    
+/* Hati yang muncul saat layar disentuh */
+.touch-heart{
+  position:fixed;
+  z-index:15;
+  pointer-events:none;
+  color:#75e5f5;
+  font-size:24px;
+  text-shadow:0 0 10px #75e5f5aa;
+  animation:touchHeartFloat 1.5s ease-out forwards;
+}
+
+@keyframes touchHeartFloat{
+  0%{
+    opacity:1;
+    transform:translate(-50%,-50%) scale(.5);
+  }
+  100%{
+    opacity:0;
+    transform:translate(-50%,-130px) scale(1.5);
+  }
+}
+    
     .hero{min-height:100svh;display:grid;place-items:center;text-align:center;padding:76px 20px 60px;position:relative;background:radial-gradient(ellipse at 50% 40%,#1c3656 0,#0c1e37 45%,#08172d 78%)}
     .frame{border:1px solid #d8b56d88;padding:clamp(28px,6vw,70px);max-width:850px;position:relative;box-shadow:0 0 80px #0005,inset 0 0 50px #d8b56d0b}
     .frame:before,.frame:after{content:"✦";position:absolute;color:var(--gold);font-size:22px;background:var(--navy);padding:0 12px}.frame:before{top:-13px;left:calc(50% - 16px)}.frame:after{bottom:-13px;left:calc(50% - 16px)}
@@ -714,6 +737,26 @@ body.letter-open .letter-cover{
 
     loveRain.appendChild(love);
   }
+  
+ // Efek hati saat layar disentuh
+document.addEventListener('pointerdown', (event) => {
+  for (let i = 0; i < 4; i++) {
+    const heart = document.createElement('span');
+    heart.className = 'touch-heart';
+    heart.textContent = '♥';
+
+    heart.style.left = (event.clientX + (Math.random() * 50 - 25)) + 'px';
+    heart.style.top = (event.clientY + (Math.random() * 30 - 15)) + 'px';
+    heart.style.animationDelay = (i * 0.08) + 's';
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 1800);
+  }
+});
+  
 // Fungsi membuka amplop anniversary
 const openLetterBtn = document.getElementById('openLetter');
 const envelope = document.getElementById('envelope');
