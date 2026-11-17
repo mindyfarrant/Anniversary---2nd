@@ -46,27 +46,58 @@
   }
 }
     
-/* Hati yang muncul saat layar disentuh */
+
+/* Efek sentuhan hati emas dan glitter */
 .touch-heart{
   position:fixed;
   z-index:15;
   pointer-events:none;
-  color:#75e5f5;
-  font-size:24px;
-  text-shadow:0 0 10px #75e5f5aa;
-  animation:touchHeartFloat 1.5s ease-out forwards;
+  color:#d8b56d;
+  font-size:25px;
+  text-shadow:
+    0 0 5px #f3dfaa,
+    0 0 12px #d8b56d,
+    0 0 22px #d8b56d88;
+  animation:goldHeartFloat 1.8s ease-out forwards;
 }
 
-@keyframes touchHeartFloat{
+.touch-glitter{
+  position:fixed;
+  z-index:15;
+  pointer-events:none;
+  color:#f3dfaa;
+  font-size:12px;
+  text-shadow:0 0 8px #f3dfaa,0 0 15px #d8b56d;
+  animation:goldGlitter 1.4s ease-out forwards;
+}
+
+@keyframes goldHeartFloat{
   0%{
-    opacity:1;
-    transform:translate(-50%,-50%) scale(.5);
+    opacity:0;
+    transform:translate(-50%,-50%) scale(.3) rotate(-15deg);
   }
+  20%{opacity:1;}
   100%{
     opacity:0;
-    transform:translate(-50%,-130px) scale(1.5);
+    transform:translate(-50%,-110px) scale(1.5) rotate(20deg);
   }
 }
+
+@keyframes goldGlitter{
+  0%{
+    opacity:0;
+    transform:translate(-50%,-50%) scale(.3) rotate(0deg);
+  }
+  35%{opacity:1;}
+  100%{
+    opacity:0;
+    transform:translate(
+      calc(-50% + var(--spark-x)),
+      calc(-50% + var(--spark-y))
+    ) scale(1.5) rotate(180deg);
+  }
+}
+    
     
     .hero{min-height:100svh;display:grid;place-items:center;text-align:center;padding:76px 20px 60px;position:relative;background:radial-gradient(ellipse at 50% 40%,#1c3656 0,#0c1e37 45%,#08172d 78%)}
     .frame{border:1px solid #d8b56d88;padding:clamp(28px,6vw,70px);max-width:850px;position:relative;box-shadow:0 0 80px #0005,inset 0 0 50px #d8b56d0b}
@@ -738,22 +769,41 @@ body.letter-open .letter-cover{
     loveRain.appendChild(love);
   }
   
- // Efek hati saat layar disentuh
+ 
+// Efek hati emas dan glitter saat layar disentuh
 document.addEventListener('pointerdown', (event) => {
-  for (let i = 0; i < 4; i++) {
+
+  // Membuat hati emas
+  for (let i = 0; i < 3; i++) {
     const heart = document.createElement('span');
     heart.className = 'touch-heart';
     heart.textContent = '♥';
 
-    heart.style.left = (event.clientX + (Math.random() * 50 - 25)) + 'px';
+    heart.style.left = (event.clientX + (Math.random() * 40 - 20)) + 'px';
     heart.style.top = (event.clientY + (Math.random() * 30 - 15)) + 'px';
-    heart.style.animationDelay = (i * 0.08) + 's';
+    heart.style.animationDelay = (i * 0.12) + 's';
 
     document.body.appendChild(heart);
 
-    setTimeout(() => {
-      heart.remove();
-    }, 1800);
+    setTimeout(() => heart.remove(), 2000);
+  }
+
+  // Membuat 12 kilauan glitter emas
+  for (let i = 0; i < 12; i++) {
+    const glitter = document.createElement('span');
+    glitter.className = 'touch-glitter';
+    glitter.textContent = '✦';
+
+    glitter.style.left = event.clientX + 'px';
+    glitter.style.top = event.clientY + 'px';
+
+    glitter.style.setProperty('--spark-x', (Math.random() * 120 - 60) + 'px');
+    glitter.style.setProperty('--spark-y', (Math.random() * 120 - 60) + 'px');
+    glitter.style.animationDelay = (Math.random() * 0.3) + 's';
+
+    document.body.appendChild(glitter);
+
+    setTimeout(() => glitter.remove(), 1800);
   }
 });
   
