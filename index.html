@@ -68,11 +68,14 @@
       <div class="wrap">
         <div class="section-head"><span class="eyebrow">Our treasured moments</span><h2>Sepotong cerita kita</h2><p>Setiap foto menyimpan cerita yang ingin selalu kita ingat.</p></div>
         <div class="gallery" id="gallery">
-          <div class="photo"><div class="placeholder"><b>✧</b><small>Our favorite memory</small></div></div>
-          <div class="photo"><div class="placeholder"><b>♡</b><small>A moment to remember</small></div></div>
-          <div class="photo"><div class="placeholder"><b>✦</b><small>Always and forever</small></div></div>
+          <div class="photo"><img src="/photos/04-0503.JPG" alt="Kenangan kami"></div>
+          <div class="photo"><img src="/photos/IMG-20240122-WA0032.jpg" alt="Kenangan kami"></div>
+          <div class="photo"><img src="/photos/IMG-20240122-WA0052.jpg" alt="Kenangan kami"></div>
+          <div class="photo"><img src="/photos/IMG-20260929-WA0005.jpg" alt="Kenangan kami"></div>
+          <div class="photo"><img src="/photos/IMG-20260929-WA0020.jpg" alt="Kenangan kami"></div>
+          <div class="photo"><img src="/photos/P_20260624_083928.jpg" alt="Kenangan kami"></div>
         </div>
-        <p class="gallery-note">Pilih tombol “Tambahkan foto” di bagian atas untuk melihat foto kalian di halaman ini.<br>Untuk menampilkan foto secara permanen pada link yang dibagikan, ikuti petunjuk di README.</p>
+        <p class="gallery-note">Enam kenangan indah kita, tersimpan dalam satu cerita. ♡</p>
       </div>
     </section>
 
@@ -94,7 +97,7 @@
   if (TANGGAL_ANNIVERSARY) document.getElementById('anniversaryDate').textContent = TANGGAL_ANNIVERSARY;
 
   // Lagu yang disediakan: letakkan file MP3 di public/music/.
-  const anniversaryAudio = new Audio('/music/young-and-beautiful.mp3');
+  const anniversaryAudio = new Audio('/music/Lana%20Del%20Rey%20-%20Young%20and%20Beautiful(MP3_160K).mp3');
   anniversaryAudio.loop = true;
   anniversaryAudio.volume = 0.65;
 
@@ -114,16 +117,7 @@
     }
   });
 
-  // Foto yang dipilih tampil sebagai pratinjau di browser saat ini.
-  document.getElementById('photoInput').addEventListener('change',e=>{
-    const files=[...e.target.files].slice(0,9); if(!files.length)return;
-    const gallery=document.getElementById('gallery');gallery.innerHTML='';
-    files.forEach(file=>{
-      const card=document.createElement('div');card.className='photo';
-      const img=document.createElement('img');img.src=URL.createObjectURL(file);img.alt='Kenangan bersama';
-      card.appendChild(img);gallery.appendChild(card);
-    });
-  });
+
 </script>
 </body>
 </html>
