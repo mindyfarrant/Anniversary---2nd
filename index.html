@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#08172d" />
+  <meta name="description" content="Sebuah perayaan kecil untuk cinta yang terus tumbuh." />
+  <title>Happy Wedding Anniversary</title>
+  <style>
+    :root{--navy:#08172d;--navy2:#102746;--gold:#d8b56d;--gold2:#f3dfaa;--cream:#fff9ec;--muted:#c9c5bb}
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;background:var(--navy);color:var(--cream);font-family:Georgia,'Times New Roman',serif;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;background:radial-gradient(circle at 15% 18%,#b88b47 0 1px,transparent 2px),radial-gradient(circle at 80% 35%,#f4dca4 0 1px,transparent 2px),radial-gradient(circle at 65% 82%,#b88b47 0 1px,transparent 2px);background-size:190px 190px,240px 240px,280px 280px}
+    .wrap{width:min(1100px,92%);margin:auto}.hero{min-height:100svh;display:grid;place-items:center;text-align:center;padding:76px 20px 60px;position:relative;background:radial-gradient(ellipse at 50% 40%,#1c3656 0,#0c1e37 45%,#08172d 78%)}
+    .frame{border:1px solid #d8b56d88;padding:clamp(28px,6vw,70px);max-width:850px;position:relative;box-shadow:0 0 80px #0005,inset 0 0 50px #d8b56d0b}
+    .frame:before,.frame:after{content:"✦";position:absolute;color:var(--gold);font-size:22px;background:var(--navy);padding:0 12px}.frame:before{top:-13px;left:calc(50% - 16px)}.frame:after{bottom:-13px;left:calc(50% - 16px)}
+    .eyebrow{letter-spacing:.32em;text-transform:uppercase;color:var(--gold2);font:11px Arial,sans-serif}.ornament{color:var(--gold);font-size:30px;margin:22px 0}
+    h1{font-weight:400;font-size:clamp(42px,8vw,82px);line-height:1.04;margin:18px 0;color:var(--gold2)}h1 span{display:block;font-style:italic;font-size:.58em;color:var(--cream);margin-top:10px}
+    .intro{font-size:clamp(16px,2.2vw,20px);line-height:1.8;color:#e8e0d1;max-width:620px;margin:24px auto 30px}
+    .names{font-size:clamp(23px,4vw,34px);color:var(--gold2);font-style:italic;margin:25px 0 8px}
+    .date{font:11px Arial,sans-serif;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+    .btn{border:1px solid var(--gold);background:transparent;color:var(--gold2);padding:13px 23px;letter-spacing:.12em;text-transform:uppercase;font:11px Arial,sans-serif;cursor:pointer;transition:.25s}
+    .btn:hover{background:var(--gold);color:var(--navy)}.hero-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:32px}
+    section{padding:90px 0;position:relative}.section-head{text-align:center;margin-bottom:42px}.section-head .eyebrow{margin-bottom:14px;display:block}
+    h2{font-weight:400;font-size:clamp(30px,5vw,46px);color:var(--gold2);margin:0 0 12px}.section-head p{color:var(--muted);line-height:1.7;margin:0}
+    .message{max-width:760px;margin:auto;text-align:center;border-top:1px solid #d8b56d66;border-bottom:1px solid #d8b56d66;padding:38px 24px;font-size:clamp(18px,2.5vw,23px);line-height:1.95;color:#eee5d5}
+    .message em{color:var(--gold2)}.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .photo{aspect-ratio:4/5;border:1px solid #d8b56d77;background:linear-gradient(145deg,#203b5c,#0d1e35);display:grid;place-items:center;overflow:hidden;position:relative}
+    .photo img{width:100%;height:100%;object-fit:cover;display:block}.photo .placeholder{text-align:center;padding:20px;color:#d7c49b}.photo .placeholder b{display:block;font-size:30px;font-weight:400;margin-bottom:10px}.photo .placeholder small{font:10px Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+    .gallery-note{text-align:center;color:var(--muted);font:12px Arial,sans-serif;margin-top:18px;line-height:1.7}
+    .closing{text-align:center;padding:80px 20px 100px;background:linear-gradient(180deg,#0b1d35,#061225)}.closing p{font-size:20px;line-height:1.8;color:#e7dece;max-width:620px;margin:20px auto}.signature{font-style:italic;color:var(--gold2);font-size:27px}
+    footer{text-align:center;padding:20px;color:#938b7c;font:10px Arial,sans-serif;letter-spacing:.16em}
+    .music{position:fixed;right:18px;bottom:18px;z-index:5;border:1px solid #d8b56d99;background:#0b1d35ee;color:var(--gold2);padding:12px 15px;border-radius:40px;font:11px Arial,sans-serif;letter-spacing:.06em;cursor:pointer;backdrop-filter:blur(8px)}
+    .upload{display:inline-block;margin-top:14px}.upload input{display:none}
+    @media(max-width:700px){.gallery{grid-template-columns:1fr 1fr}.gallery .photo:last-child{grid-column:1/-1;max-height:360px}.hero{min-height:92svh}.frame{padding:35px 20px}}
+  </style>
+</head>
+<body>
+  <main>
+    <header class="hero">
+      <div class="frame">
+        <div class="eyebrow">A celebration of love</div>
+        <div class="ornament">✧ ✦ ✧</div>
+        <h1>Happy Wedding<span>Anniversary</span></h1>
+        <p class="intro">Hari ini, kita merayakan bukan hanya waktu yang telah berlalu, tetapi juga setiap tawa, doa, pelukan, dan hal sederhana yang membuat perjalanan ini begitu berarti.</p>
+        <div class="names" id="coupleNames">Dua hati, satu perjalanan</div>
+        <div class="date" id="anniversaryDate">Our beautiful story continues</div>
+        <div class="hero-actions">
+          <button class="btn" onclick="document.querySelector('#our-story').scrollIntoView({behavior:'smooth'})">Baca pesan cinta</button>
+          <label class="btn upload">Tambahkan foto<input id="photoInput" type="file" accept="image/*" multiple></label>
+        </div>
+      </div>
+    </header>
+
+    <section id="our-story">
+      <div class="wrap">
+        <div class="section-head"><span class="eyebrow">A little note from the heart</span><h2>Untuk kita, hari ini dan nanti</h2><p>Hal-hal sederhana sering kali menjadi bagian terindah dari cinta.</p></div>
+        <div class="message">
+          Terima kasih sudah menjadi rumah untuk pulang, teman untuk berbagi cerita, dan seseorang yang selalu ingin kugenggam tangannya dalam setiap musim kehidupan.<br><br>
+          Kita mungkin tidak selalu sempurna, tetapi semoga kita selalu memilih untuk saling memahami, memaafkan, dan mencintai dengan lebih baik setiap hari.<br><br>
+          <em>Semoga perjalanan kita selalu dipenuhi hal-hal baik, tawa yang hangat, dan cinta yang terus tumbuh.</em><br><br>
+          Happy Wedding Anniversary. I’m grateful for us.
+        </div>
+      </div>
+    </section>
+
+    <section id="memories" style="background:#0b1d35">
+      <div class="wrap">
+        <div class="section-head"><span class="eyebrow">Our treasured moments</span><h2>Sepotong cerita kita</h2><p>Setiap foto menyimpan cerita yang ingin selalu kita ingat.</p></div>
+        <div class="gallery" id="gallery">
+          <div class="photo"><div class="placeholder"><b>✧</b><small>Our favorite memory</small></div></div>
+          <div class="photo"><div class="placeholder"><b>♡</b><small>A moment to remember</small></div></div>
+          <div class="photo"><div class="placeholder"><b>✦</b><small>Always and forever</small></div></div>
+        </div>
+        <p class="gallery-note">Pilih tombol “Tambahkan foto” di bagian atas untuk melihat foto kalian di halaman ini.<br>Untuk menampilkan foto secara permanen pada link yang dibagikan, ikuti petunjuk di README.</p>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="eyebrow">With all my love</div><div class="ornament">✦</div>
+      <h2>Masih kamu. Selalu kamu.</h2>
+      <p>Untuk hari ini, untuk hari esok, dan untuk semua cerita yang belum kita tulis. Terima kasih sudah berjalan bersamaku.</p>
+      <div class="signature">Forever yours ♡</div>
+    </section>
+  </main>
+  <footer>MADE WITH LOVE · OUR STORY, STILL UNFOLDING</footer>
+  <button class="music" id="musicBtn" aria-label="Putar musik romantis">♫ Putar musik</button>
+<script>
+  // Personalisasi cepat: ubah dua nilai di bawah ini sebelum deploy.
+  const NAMA_PASANGAN = "My Lovely Husband Muel"; // Nama yang ditampilkan
+  const TANGGAL_ANNIVERSARY = ""; // Contoh: "17 November 2026"
+
+  if (NAMA_PASANGAN) document.getElementById('coupleNames').textContent = NAMA_PASANGAN;
+  if (TANGGAL_ANNIVERSARY) document.getElementById('anniversaryDate').textContent = TANGGAL_ANNIVERSARY;
+
+  // Lagu yang disediakan: letakkan file MP3 di public/music/.
+  const anniversaryAudio = new Audio('/music/young-and-beautiful.mp3');
+  anniversaryAudio.loop = true;
+  anniversaryAudio.volume = 0.65;
+
+  document.getElementById('musicBtn').addEventListener('click', async()=>{
+    const btn=document.getElementById('musicBtn');
+    if (anniversaryAudio.paused) {
+      try {
+        await anniversaryAudio.play();
+        btn.textContent='Ⅱ Jeda musik';
+      } catch (error) {
+        btn.textContent='♫ Coba putar lagi';
+        console.error('Audio tidak dapat diputar:', error);
+      }
+    } else {
+      anniversaryAudio.pause();
+      btn.textContent='♫ Putar musik';
+    }
+  });
+
+  // Foto yang dipilih tampil sebagai pratinjau di browser saat ini.
+  document.getElementById('photoInput').addEventListener('change',e=>{
+    const files=[...e.target.files].slice(0,9); if(!files.length)return;
+    const gallery=document.getElementById('gallery');gallery.innerHTML='';
+    files.forEach(file=>{
+      const card=document.createElement('div');card.className='photo';
+      const img=document.createElement('img');img.src=URL.createObjectURL(file);img.alt='Kenangan bersama';
+      card.appendChild(img);gallery.appendChild(card);
+    });
+  });
+</script>
+</body>
+</html>
