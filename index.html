@@ -1,6 +1,9 @@
 <!doctype html>
 <html lang="id">
 <head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#08172d" />
@@ -180,9 +183,29 @@
   cursor:pointer;
 }
 .slide-dots button.active{background:var(--gold);}
-    
     .closing{text-align:center;padding:80px 20px 100px;background:linear-gradient(180deg,#0b1d35,#061225)}.closing p{font-size:20px;line-height:1.8;color:#e7dece;max-width:620px;margin:20px auto}.signature{font-style:italic;color:var(--gold2);font-size:27px}
-    footer{text-align:center;padding:20px;color:#938b7c;font:10px Arial,sans-serif;letter-spacing:.16em}
+     
+  /* Font Allura untuk penutup */
+.closing h2,
+.closing p,
+.closing .signature{
+  font-family:'Allura',cursive;
+  font-weight:400;
+}
+
+.closing h2{
+  font-size:clamp(42px,8vw,58px);
+}
+
+.closing p{
+  font-size:30px;
+  line-height:1.5;
+}
+
+.closing .signature{
+  font-size:38px;
+}
+    .footer{text-align:center;padding:20px;color:#938b7c;font:10px Arial,sans-serif;letter-spacing:.16em}
     .music{position:fixed;right:18px;bottom:18px;z-index:5;border:1px solid #d8b56d99;background:#0b1d35ee;color:var(--gold2);padding:12px 15px;border-radius:40px;font:11px Arial,sans-serif;letter-spacing:.06em;cursor:pointer;backdrop-filter:blur(8px)}
     .upload{display:inline-block;margin-top:14px}.upload input{display:none}
     @media(max-width:700px){
