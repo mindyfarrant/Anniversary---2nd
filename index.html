@@ -6,6 +6,7 @@
   <meta name="theme-color" content="#08172d" />
   <meta name="description" content="Sebuah perayaan kecil untuk cinta yang terus tumbuh." />
   <title>Happy Wedding Anniversary</title>
+  
   <style>
     :root{--navy:#08172d;--navy2:#102746;--gold:#d8b56d;--gold2:#f3dfaa;--cream:#fff9ec;--muted:#c9c5bb}
     *{box-sizing:border-box} html{scroll-behavior:smooth}
@@ -135,10 +136,187 @@
   .hero{min-height:92svh}
   .frame{padding:35px 20px}
     }
+    
+/* Tampilan pembuka amplop anniversary */
+.letter-cover{
+  position:fixed;
+  inset:0;
+  z-index:20;
+  display:grid;
+  place-items:center;
+  padding:25px;
+  text-align:center;
+  background:radial-gradient(ellipse at center,#203c5c,#08172d 75%);
+  transition:opacity 1s ease,visibility 1s ease;
+}
+
+body:not(.letter-open) main{
+  visibility:hidden;
+}
+
+body.letter-open main{
+  visibility:visible;
+  animation:pageReveal 1.2s ease both;
+}
+
+body.letter-open .letter-cover{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+@keyframes pageReveal{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+.envelope-content{
+  width:100%;
+  max-width:420px;
+}
+
+.letter-label{
+  color:var(--gold2);
+  font:11px Arial,sans-serif;
+  letter-spacing:4px;
+  margin-bottom:35px;
+}
+
+.envelope{
+  position:relative;
+  width:min(320px,85vw);
+  height:210px;
+  margin:0 auto 35px;
+  perspective:900px;
+}
+
+.envelope-back{
+  position:absolute;
+  inset:0;
+  background:#173653;
+  border:1px solid var(--gold);
+}
+
+.letter-paper{
+  position:absolute;
+  z-index:2;
+  left:8%;
+  bottom:5px;
+  width:84%;
+  height:88%;
+  padding:35px 10px;
+  background:#fff9ec;
+  color:#173653;
+  transition:transform 1.2s ease;
+}
+
+.letter-paper span{
+  font:italic 19px Georgia,serif;
+}
+
+.letter-paper p{
+  color:#9b7740;
+  font:italic 15px Georgia,serif;
+}
+
+.envelope-front{
+  position:absolute;
+  inset:0;
+  z-index:3;
+  background:#102b49;
+  clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%);
+  border-bottom:1px solid var(--gold);
+}
+
+.envelope-flap{
+  position:absolute;
+  inset:0;
+  z-index:4;
+  background:#244665;
+  clip-path:polygon(0 0,100% 0,50% 58%);
+  transform-origin:top center;
+  transition:transform 1s ease;
+  backface-visibility:visible;
+}
+
+.wax-seal{
+  position:absolute;
+  z-index:5;
+  left:50%;
+  top:48%;
+  transform:translate(-50%,-50%);
+  width:43px;
+  height:43px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:linear-gradient(145deg,#e4c47e,#98713b);
+  color:#fff4d5;
+  box-shadow:0 2px 10px #0005;
+}
+
+.envelope-content h2{
+  color:var(--gold2);
+  font:italic 30px Georgia,serif;
+  margin:0 0 12px;
+}
+
+.envelope-subtitle{
+  color:#e8e0d1;
+  font:14px Georgia,serif;
+  margin:0 0 28px;
+}
+
+#openLetter{
+  position:relative;
+  z-index:6;
+}
+
+.envelope.opening .envelope-flap{
+  transform:rotateX(180deg);
+}
+
+.envelope.opening .letter-paper{
+  transform:translateY(-95px);
+}
+
+.envelope.opening .wax-seal{
+  opacity:0;
+  transition:opacity .3s ease;
+}
+    
   </style>
 </head>
+  
 <body>
   <div class="love-rain" id="loveRain"></div>
+
+  <div class="letter-cover" id="letterCover">
+    <div class="envelope-content">
+      <div class="letter-label">A SPECIAL LETTER FOR YOU</div>
+
+      <div class="envelope" id="envelope">
+        <div class="envelope-back"></div>
+        <div class="letter-paper">
+          <span>To My Lovely Husband</span>
+          <p>With all my love ♡</p>
+        </div>
+        <div class="envelope-front"></div>
+        <div class="envelope-flap"></div>
+        <div class="wax-seal">♥</div>
+      </div>
+
+      <h2>My Lovely Husband</h2>
+      <p class="envelope-subtitle">
+        Ada sesuatu yang ingin kusampaikan...
+      </p>
+
+      <button class="btn" id="openLetter">
+        ♡ Baca Pesan Cinta ♡
+      </button>
+    </div>
+  </div>
+
   <main>
     <header class="hero">
       <div class="frame">
@@ -150,7 +328,7 @@
         <div class="date" id="anniversaryDate">Our beautiful story continues</div>
         <div class="hero-actions">
           <button class="btn" onclick="document.querySelector('#our-story').scrollIntoView({behavior:'smooth'})">Baca pesan cinta</button>
-          <label class="btn upload">Tambahkan foto<input id="photoInput" type="file" accept="image/*" multiple></label>
+          
         </div>
       </div>
     </header>
@@ -304,7 +482,20 @@
 
     loveRain.appendChild(love);
   }
+// Fungsi membuka amplop anniversary
+const openLetterBtn = document.getElementById('openLetter');
+const envelope = document.getElementById('envelope');
 
+openLetterBtn.addEventListener('click', () => {
+  envelope.classList.add('opening');
+
+  openLetterBtn.disabled = true;
+  openLetterBtn.textContent = '♡ With all my love ♡';
+
+  setTimeout(() => {
+    document.body.classList.add('letter-open');
+  }, 1800);
+});
 </script>
 </body>
 </html>
