@@ -100,7 +100,17 @@ margin:0 auto;
 z-index:1;
   transform-origin:center;
 animation:ribbonWave 2.2s ease-in-out infinite;
-  background:linear-gradient(180deg,#fff0a8 0%,#e9bd50 25%,#c18b27 55%,#f5d875 80%,#b77b20 100%);
+  background:linear-gradient(
+  180deg,
+  #fff8d9 0%,
+  #f5d77e 12%,
+  #c18b27 28%,
+  #ffe9a0 43%,
+  #a66d19 55%,
+  #e8bd55 72%,
+  #fff2bd 88%,
+  #b77b20 100%
+);
   color:#172033;
   font-family:Georgia,serif;
   font-size:clamp(17px,4.5vw,29px);
@@ -109,7 +119,12 @@ animation:ribbonWave 2.2s ease-in-out infinite;
   line-height:1.4;
   border:1px solid #ffe8a0;
   border-radius:5px 5px 35% 35% / 5px 5px 12% 12%;
-  box-shadow:0 5px 12px #0006,inset 0 2px 5px #fff9b5,inset 0 -4px 7px #80551c88;
+  box-shadow:
+  0 7px 15px #0008,
+  inset 0 3px 5px #fffbd0,
+  inset 0 -5px 9px #70420c,
+  inset 35px 0 25px #fff2,
+  inset -35px 0 25px #5c350b55;
   text-shadow:0 1px 1px #fff2bd;
 }
 
@@ -133,9 +148,10 @@ animation:ribbonWave 2.2s ease-in-out infinite;
 .anniversary-ribbon span{
   transform-origin:center;
   animation:ribbonSatin 3.5s ease-in-out infinite;
-  background-size:200% 100%;
+  background-size:200% 200%;
+background-position:0% 50%;
 }
-
+    
 @keyframes ribbonBreeze{
   0%,100%{transform:translateY(0) rotate(-1deg)}
   50%{transform:translateY(-4px) rotate(1deg)}
@@ -161,14 +177,24 @@ animation:ribbonWave 2.2s ease-in-out infinite;
 
 @keyframes ribbonSatin{
   0%,100%{
-    transform:perspective(900px) rotateY(-2deg) skewY(-0.5deg);
+    transform:perspective(900px) rotateY(-3deg) skewY(-1deg);
     background-position:0% 50%;
     filter:brightness(1);
   }
+  25%{
+    transform:perspective(900px) rotateY(2deg) skewY(1deg);
+    background-position:40% 50%;
+    filter:brightness(1.08);
+  }
   50%{
-    transform:perspective(900px) rotateY(2deg) skewY(0.5deg);
+    transform:perspective(900px) rotateY(4deg) skewY(-1deg);
     background-position:100% 50%;
-    filter:brightness(1.12);
+    filter:brightness(1.15);
+  }
+  75%{
+    transform:perspective(900px) rotateY(-2deg) skewY(1deg);
+    background-position:60% 50%;
+    filter:brightness(1.06);
   }
 }
     
