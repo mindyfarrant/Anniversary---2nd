@@ -341,7 +341,46 @@ body.letter-open .letter-cover{
   from{opacity:0}
   to{opacity:1}
 }
+    
+/* Animasi kelopak bunga mawar */
+.rose-petals{
+  position:absolute;
+  inset:0;
+  z-index:8;
+  overflow:hidden;
+  pointer-events:none;
+}
 
+.rose-petal{
+  position:absolute;
+  width:15px;
+  height:21px;
+  border-radius:100% 0 100% 0;
+  background:linear-gradient(135deg,#ff8b9b,#c20d36 65%,#72051f);
+  box-shadow:0 2px 8px #ff547455;
+  opacity:0;
+  animation:roseBurst 3.2s ease-out forwards;
+}
+
+@keyframes roseBurst{
+  0%{
+    opacity:0;
+    transform:translate(-50%,-50%) scale(.3) rotate(0deg);
+  }
+  15%{
+    opacity:1;
+  }
+  100%{
+    opacity:0;
+    transform:
+      translate(
+        calc(-50% + var(--fly-x)),
+        calc(-50% + var(--fly-y))
+      )
+      rotate(var(--spin))
+      scale(.85);
+  }
+}
 .envelope-content{
   width:100%;
   max-width:420px;
@@ -360,6 +399,25 @@ body.letter-open .letter-cover{
   height:210px;
   margin:0 auto 35px;
   perspective:900px;
+  animation:envelopePop 1.4s cubic-bezier(.16,1,.3,1) both;
+}
+
+@keyframes envelopePop{
+  0%{
+    opacity:0;
+    transform:scale(.25) translateY(60px);
+  }
+  65%{
+    opacity:1;
+    transform:scale(1.12) translateY(-8px);
+  }
+  85%{
+    transform:scale(.96) translateY(2px);
+  }
+  100%{
+    opacity:1;
+    transform:scale(1) translateY(0);
+  }
 }
 
 .envelope-back{
@@ -639,6 +697,7 @@ body.letter-open .letter-cover{
   <div class="love-rain" id="loveRain"></div>
 
   <div class="letter-cover" id="letterCover">
+    <div class="rose-petals" id="rosePetals"></div>
     <div class="envelope-content">
       <div class="letter-label">A SPECIAL LETTER FOR YOU</div>
 
@@ -992,6 +1051,41 @@ const closingObserver = new IntersectionObserver((entries) => {
 });
 
 closingObserver.observe(closingSection);
+
+  // Efek kelopak mawar terhempas saat amplop muncul
+const rosePetals = document.getElementById('rosePetals');
+
+if (rosePetals) {
+  setTimeout(() => {
+    for (let i = 0; i < 45; i++) {
+      const petal = document.createElement('span');
+
+      petal.className = 'rose-petal';
+      const envelopeRect = document.getElementById('envelope').getBoundingClientRect();
+const coverRect = rosePetals.getBoundingClientRect();
+
+petal.style.left = (envelopeRect.left + envelopeRect.width / 2 - coverRect.left) + 'px';
+petal.style.top = (envelopeRect.top + envelopeRect.height / 2 - coverRect.top) + 'px';
+      const angle = Math.random() * Math.PI * 2;
+      const distance = 140 + Math.random() * 300;
+
+      const x = Math.cos(angle) * distance;
+      const y = Math.sin(angle) * distance;
+
+      petal.style.setProperty('--fly-x', x + 'px');
+      petal.style.setProperty('--fly-y', y + 'px');
+      petal.style.setProperty('--spin', (Math.random() * 900 - 450) + 'deg');
+
+      petal.style.width = (12 + Math.random() * 10) + 'px';
+      petal.style.height = (17 + Math.random() * 12) + 'px';
+      petal.style.animationDelay = (Math.random() * 0.35) + 's';
+
+      rosePetals.appendChild(petal);
+
+      setTimeout(() => petal.remove(), 4000);
+    }
+  }, 500);
+}
 </script>
 </body>
 </html>
