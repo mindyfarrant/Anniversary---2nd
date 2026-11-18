@@ -1470,27 +1470,7 @@ if (rosePetals) {
     }
   }, 500);
 }
-</script>
-<script>
-(function(){
-  var wave = document.querySelector('.ribbon-wave');
-  if(!wave) return;
-  var face = wave.querySelector('.ribbon-face');
-  var N = 12; // harus sama dengan --n di CSS
 
-  wave.style.setProperty('--n', N);
-  wave.classList.add('is-sliced');
-
-  for(var i = 0; i < N; i++){
-    var slice = document.createElement('div');
-    slice.className = 'ribbon-slice';
-    slice.style.setProperty('--i', i);
-    slice.setAttribute('aria-hidden', 'true');
-    slice.appendChild(face.cloneNode(true));
-    wave.appendChild(slice);
-  }
-  face.remove(); // hapus aslinya, aria-label di pembungkus tetap terbaca
-})();
 </script>
 </body>
 </html>
