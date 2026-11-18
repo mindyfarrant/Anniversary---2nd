@@ -1094,9 +1094,9 @@ const coverRect = rosePetals.getBoundingClientRect();
 
 petal.style.left = (envelopeRect.left + envelopeRect.width / 2 - coverRect.left) + 'px';
 petal.style.top = (envelopeRect.top + envelopeRect.height / 2 - coverRect.top) + 'px';
-      const angle = Math.random() * Math.PI * 2;
-      const distance = 140 + Math.random() * 300;
-
+      const angle = (i / 45) * Math.PI * 2 + (Math.random() - 0.5) * 0.35;
+const distance = 180 + Math.random() * 220;
+      
       const x = Math.cos(angle) * distance;
       const y = Math.sin(angle) * distance;
 
@@ -1110,7 +1110,7 @@ petal.style.top = (envelopeRect.top + envelopeRect.height / 2 - coverRect.top) +
 
       rosePetals.appendChild(petal);
 
-      setTimeout(() => petal.remove(), 4000);
+      setTimeout(() => petal.remove(), 5000);
     }
   }, 500);
 }
