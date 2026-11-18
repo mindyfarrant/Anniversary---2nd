@@ -27,28 +27,52 @@
   isolation:isolate;
 }
 
+
 .anniversary-ribbon::before,
 .anniversary-ribbon::after{
   content:"";
   position:absolute;
-  top:12px;
-  width:22%;
-  height:65px;
+  top:5px;
+  width:30%;
+  height:90px;
   z-index:-1;
-  background:linear-gradient(90deg,#9b7027,#f3dfaa,#c18d35);
+  background:linear-gradient(
+    180deg,
+    #f3dfaa 0%,
+    #d8ad4d 25%,
+    #80551c 48%,
+    #c18d35 62%,
+    #f3dfaa 100%
+  );
 }
 
-
 .anniversary-ribbon::before{
-  left:-7%;
-  clip-path:polygon(0 0,100% 12%,100% 70%,0 100%,30% 52%);
+  left:-13%;
+  clip-path:polygon(
+    100% 0,
+    0 12%,
+    18% 50%,
+    0 88%,
+    100% 100%,
+    100% 68%,
+    72% 50%,
+    100% 32%
+  );
 }
 
 .anniversary-ribbon::after{
-  right:-7%;
-  clip-path:polygon(0 12%,100% 0,70% 52%,100% 100%,0 70%);
+  right:-13%;
+  clip-path:polygon(
+    0 0,
+    100% 12%,
+    82% 50%,
+    100% 88%,
+    0 100%,
+    0 68%,
+    28% 50%,
+    0 32%
+  );
 }
-
 
 .anniversary-ribbon span{
   display:block;
