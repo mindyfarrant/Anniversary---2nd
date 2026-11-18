@@ -66,36 +66,38 @@
 }
 
     
-/* Animasi pita berkibar lembut */
+
+/* Animasi pita tertiup angin */
 .anniversary-ribbon{
   transform-origin:center;
-  animation:ribbonBreeze 4.5s ease-in-out infinite;
+  animation:ribbonBreeze 2.8s ease-in-out infinite;
 }
 
 .anniversary-ribbon::before{
   transform-origin:right center;
-  animation:ribbonLeft 3.2s ease-in-out infinite;
+  animation:ribbonLeft 1.8s ease-in-out infinite;
 }
 
 .anniversary-ribbon::after{
   transform-origin:left center;
-  animation:ribbonRight 3.6s ease-in-out infinite;
+  animation:ribbonRight 1.8s ease-in-out infinite;
 }
 
 @keyframes ribbonBreeze{
-  0%,100%{transform:translateY(0) rotate(0deg)}
-  50%{transform:translateY(-4px) rotate(.5deg)}
+  0%,100%{transform:translateY(0) rotate(-1deg)}
+  50%{transform:translateY(-7px) rotate(1deg)}
 }
 
 @keyframes ribbonLeft{
-  0%,100%{transform:rotate(0deg)}
-  50%{transform:rotate(-3deg)}
+  0%,100%{transform:rotate(5deg) skewY(0deg)}
+  50%{transform:rotate(-9deg) skewY(3deg)}
 }
 
 @keyframes ribbonRight{
-  0%,100%{transform:rotate(0deg)}
-  50%{transform:rotate(3deg)}
+  0%,100%{transform:rotate(-5deg) skewY(0deg)}
+  50%{transform:rotate(9deg) skewY(-3deg)}
 }
+
     
     
 /* Hujan love biru aqua */
