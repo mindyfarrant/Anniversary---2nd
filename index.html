@@ -46,40 +46,60 @@
   );
 }
 
+.anniversary-ribbon::before,
+.anniversary-ribbon::after{
+content:"";
+position:absolute;
+top:5px;
+width:25%;
+height:78px;
+z-index:-1;
+background:linear-gradient(
+180deg,
+#f3dfaa 0%,
+#d8ad4d 25%,
+#80551c 48%,
+#c18d35 62%,
+#f3dfaa 100%
+);
+}
+
 .anniversary-ribbon::before{
-  left:-13%;
-  clip-path:polygon(
-    100% 0,
-    0 12%,
-    18% 50%,
-    0 88%,
-    100% 100%,
-    100% 68%,
-    72% 50%,
-    100% 32%
-  );
+left:-10%;
+clip-path:polygon(
+100% 0,
+0 12%,
+18% 50%,
+0 88%,
+100% 100%,
+100% 68%,
+72% 50%,
+100% 32%
+);
 }
 
 .anniversary-ribbon::after{
-  right:-13%;
-  clip-path:polygon(
-    0 0,
-    100% 12%,
-    82% 50%,
-    100% 88%,
-    0 100%,
-    0 68%,
-    28% 50%,
-    0 32%
-  );
+right:-10%;
+clip-path:polygon(
+0 0,
+100% 12%,
+82% 50%,
+100% 88%,
+0 100%,
+0 68%,
+28% 50%,
+0 32%
+);
 }
 
 .anniversary-ribbon span{
-  display:block;
+display:block;
+width:86%;
+margin:0 auto;
   position:relative;
+z-index:1;
   transform-origin:center;
 animation:ribbonWave 2.2s ease-in-out infinite;
-  padding:22px 12px;
   background:linear-gradient(180deg,#fff0a8 0%,#e9bd50 25%,#c18b27 55%,#f5d875 80%,#b77b20 100%);
   color:#172033;
   font-family:Georgia,serif;
