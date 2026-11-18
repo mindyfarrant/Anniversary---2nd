@@ -557,6 +557,22 @@ body.letter-open .letter-cover{
   transform-style:preserve-3d;
   filter:drop-shadow(0 4px 6px #0007);
 }
+
+    /* Kilau emas pada lipatan tutup amplop */
+.envelope-flap::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    135deg,
+    #f8e5b455 0%,
+    transparent 38%,
+    #d8b56d22 70%,
+    transparent 100%
+  );
+  clip-path:polygon(0 0,100% 0,50% 58%);
+  pointer-events:none;
+}
     
     /* Tombol hati untuk membuka surat */
 .heart-button{
