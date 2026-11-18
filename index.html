@@ -636,23 +636,28 @@ body.letter-open .letter-cover{
   font:italic 14px Georgia,serif;
 }
 
-    /* Animasi tulisan Made with Love */
+    /* Tulisan berjalan tanpa jeda */
 .love-marquee{
   width:100%;
   overflow:hidden;
   margin-top:22px;
   padding:10px 0;
-  white-space:nowrap;
+}
+
+.love-marquee-track{
+  display:flex;
+  width:max-content;
+  animation:loveMarquee 22s linear infinite;
 }
 
 .love-marquee span{
-  display:inline-block;
-  padding-left:100%;
+  flex-shrink:0;
+  padding-right:0;
   color:#d8b56d;
   font-family:Arial,sans-serif;
   font-size:10px;
   letter-spacing:3px;
-  animation:loveMarquee 14s linear infinite;
+  white-space:nowrap;
   text-shadow:0 0 10px #d8b56d66;
 }
 
@@ -661,9 +666,10 @@ body.letter-open .letter-cover{
     transform:translateX(0);
   }
   to{
-    transform:translateX(-100%);
+    transform:translateX(-50%);
   }
 }
+    
     /* Tampilan surat cinta rahasia */
 .secret-letter-modal{
   position:fixed;
@@ -957,7 +963,10 @@ body.letter-open .letter-cover{
 
   <p class="secret-caption">A special letter, just for Muel ♡</p>
       <div class="love-marquee">
-  <span>♥♥♥♥ MADE WITH LOVE, WRAPPED IN WARMTH, AND SENT WITH ALL MY HEART. OUR STORY, STILL UNFOLDING. BY DITA ♥♥♥♥</span>
+  <div class="love-marquee-track">
+    <span>♥♥♥♥ MADE WITH LOVE, WRAPPED IN WARMTH, AND SENT WITH ALL MY HEART. OUR STORY, STILL UNFOLDING. BY DITA </span>
+    <span aria-hidden="true">♥♥♥♥ MADE WITH LOVE, WRAPPED IN WARMTH, AND SENT WITH ALL MY HEART. OUR STORY, STILL UNFOLDING. BY DITA </span>
+  </div>
       </div>
     </section>
   </main>
