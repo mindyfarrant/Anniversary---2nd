@@ -38,19 +38,23 @@
   background:linear-gradient(90deg,#9b7027,#f3dfaa,#c18d35);
 }
 
+
 .anniversary-ribbon::before{
-  left:-5%;
-  clip-path:polygon(0 0,100% 15%,100% 75%,0 100%,18% 50%);
+  left:-7%;
+  clip-path:polygon(0 0,100% 12%,100% 70%,0 100%,30% 52%);
 }
 
 .anniversary-ribbon::after{
-  right:-5%;
-  clip-path:polygon(0 15%,100% 0,82% 50%,100% 100%,0 75%);
+  right:-7%;
+  clip-path:polygon(0 12%,100% 0,70% 52%,100% 100%,0 70%);
 }
+
 
 .anniversary-ribbon span{
   display:block;
   position:relative;
+  transform-origin:center;
+animation:ribbonWave 2.2s ease-in-out infinite;
   padding:22px 12px;
   background:linear-gradient(180deg,#fff0a8 0%,#e9bd50 25%,#c18b27 55%,#f5d875 80%,#b77b20 100%);
   color:#172033;
@@ -97,7 +101,14 @@
   0%,100%{transform:rotate(-5deg) skewY(0deg)}
   50%{transform:rotate(9deg) skewY(-3deg)}
 }
-
+@keyframes ribbonWave{
+  0%,100%{
+    transform:perspective(700px) rotateY(-3deg) skewY(-1deg);
+  }
+  50%{
+    transform:perspective(700px) rotateY(3deg) skewY(1deg);
+  }
+}
     
     
 /* Hujan love biru aqua */
