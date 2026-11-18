@@ -185,7 +185,20 @@
 .slide-dots button.active{background:var(--gold);}
     .closing{text-align:center;padding:80px 20px 100px;background:linear-gradient(180deg,#0b1d35,#061225)}.closing p{font-size:20px;line-height:1.8;color:#e7dece;max-width:620px;margin:20px auto}.signature{font-style:italic;color:var(--gold2);font-size:27px}
      
-  /* Font Allura untuk penutup */
+  
+/* Tampilan penutup anniversary */
+.closing{
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+  padding:100px 20px 110px;
+  background:
+    radial-gradient(ellipse at 50% 45%,#183451 0%,transparent 65%),
+    linear-gradient(180deg,#0b1d35,#061225);
+  border-top:1px solid #d8b56d55;
+}
+
+/* Font handwritten Allura */
 .closing h2,
 .closing p,
 .closing .signature{
@@ -195,16 +208,98 @@
 
 .closing h2{
   font-size:clamp(42px,8vw,58px);
+  color:#f3dfaa;
 }
 
 .closing p{
   font-size:30px;
   line-height:1.5;
+  color:#e7dece;
+  max-width:620px;
+  margin:20px auto;
 }
 
 .closing .signature{
   font-size:38px;
+  color:#f3dfaa;
 }
+
+.closing .eyebrow{
+  color:#d8b56d;
+  letter-spacing:4px;
+}
+
+.closing .ornament{
+  color:#d8b56d;
+  font-size:24px;
+  text-shadow:0 0 12px #d8b56d;
+}
+
+/* Awalnya semua tulisan samar dan blur */
+.closing .eyebrow,
+.closing .ornament,
+.closing h2,
+.closing p,
+.closing .signature{
+  opacity:0;
+  filter:blur(12px);
+  transform:translateY(18px);
+}
+
+/* Animasi muncul bertahap */
+.closing.show-closing .eyebrow{
+  animation:closingReveal 2s ease 0s forwards;
+}
+.closing.show-closing .ornament{
+  animation:closingReveal 2s ease .4s forwards;
+}
+.closing.show-closing h2{
+  animation:closingRevealGlow 3s ease .8s forwards;
+}
+.closing.show-closing p{
+  animation:closingReveal 2.5s ease 1.5s forwards;
+}
+.closing.show-closing .signature{
+  animation:closingRevealGlow 3s ease 2.2s forwards;
+}
+
+@keyframes closingReveal{
+  0%{
+    opacity:0;
+    filter:blur(12px);
+    transform:translateY(18px);
+  }
+  40%{
+    opacity:.25;
+    filter:blur(6px);
+  }
+  100%{
+    opacity:1;
+    filter:blur(0);
+    transform:translateY(0);
+  }
+}
+
+@keyframes closingRevealGlow{
+  0%{
+    opacity:0;
+    filter:blur(12px);
+    transform:translateY(18px);
+    text-shadow:0 0 0 transparent;
+  }
+  45%{
+    opacity:.3;
+    filter:blur(6px);
+    text-shadow:0 0 8px #d8b56d44;
+  }
+  100%{
+    opacity:1;
+    filter:blur(0);
+    transform:translateY(0);
+    text-shadow:0 0 22px #d8b56d99;
+  }
+}
+    
     .footer{text-align:center;padding:20px;color:#938b7c;font:10px Arial,sans-serif;letter-spacing:.16em}
     .music{position:fixed;right:18px;bottom:18px;z-index:5;border:1px solid #d8b56d99;background:#0b1d35ee;color:var(--gold2);padding:12px 15px;border-radius:40px;font:11px Arial,sans-serif;letter-spacing:.06em;cursor:pointer;backdrop-filter:blur(8px)}
     .upload{display:inline-block;margin-top:14px}.upload input{display:none}
