@@ -151,7 +151,28 @@ line-height:1.3;
 }
 
 /* Badan pita satin */
-.anniversary-ribbon span {
+ .ribbon-wave {
+  display: flex;
+  position: relative;
+  width: 86%;
+  margin: 0 auto;
+    }
+
+ .ribbon-wave.is-sliced .ribbon-slice {
+  position: relative;
+  flex: 0 0 calc(100% / 12);
+  overflow: hidden;
+  transform-origin: center;
+  animation: softWave 3.6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.ribbon-slice .ribbon-face {
+  width: 1200%;
+  margin-left: calc(var(--i) * -100%);
+}
+    
+.ribbon-face {
   position: relative;
   z-index: 1;
   display: block;
@@ -248,6 +269,21 @@ animation: ribbonSatin 3.5s ease-in-out infinite,
     transform: perspective(700px) rotateY(0deg) rotateX(-1deg) skewY(-0.5deg);
   }
 }
+
+    @keyframes softWave {
+  0%, 100% {
+    transform: translateY(0) skewY(3deg);
+  }
+  25% {
+    transform: translateY(3px) skewY(1deg);
+  }
+  50% {
+    transform: translateY(0) skewY(-3deg);
+  }
+  75% {
+    transform: translateY(-3px) skewY(-1deg);
+  }
+    }
 
     @keyframes satinShimmer {
   0%, 100% {
@@ -1178,10 +1214,12 @@ body.letter-open .letter-cover{
     <header class="hero">
       <div class="frame">
         <div class="eyebrow">A celebration of love</div>
-        <div class="ornament">✧ ✦ ✧</div>
+        <div class="ornament">✧30✦11✧</div>
 <div class="anniversary-ribbon">
-  <span>HAPPY WEDDING ANNIVERSARY</span>
-        </div>
+  <div class="ribbon-wave">
+    <span class="ribbon-face">HAPPY WEDDING ANNIVERSARY</span>
+  </div>
+</div>
         <p class="intro">Hari ini, kita merayakan bukan hanya waktu yang telah berlalu, tetapi juga setiap tawa, doa, pelukan, dan hal sederhana yang membuat perjalanan ini begitu berarti.</p>
         <div class="names" id="coupleNames">Dua hati, satu perjalanan dan satu tujuan</div>
         <div class="date" id="anniversaryDate">Our beautiful story continues</div>
@@ -1549,7 +1587,36 @@ if (rosePetals) {
     }
   }, 500);
 }
+  
+// Animasi pita satin yang meliuk dari kiri ke kanan
+(function () {
+  const wave = document.querySelector('.ribbon-wave');
+  if (!wave) return;
 
+  const text = wave.querySelector('.ribbon-face')?.textContent.trim();
+  if (!text) return;
+
+  const total = 12;
+  wave.innerHTML = '';
+
+  for (let i = 0; i < total; i++) {
+    const slice = document.createElement('div');
+    slice.className = 'ribbon-slice';
+
+    slice.style.animationDelay = (-i * 3.6 / total) + 's';
+
+    const face = document.createElement('span');
+    face.className = 'ribbon-face';
+    face.textContent = text;
+    face.style.width = (total * 100) + '%';
+    face.style.marginLeft = (-i * 100) + '%';
+
+    slice.appendChild(face);
+    wave.appendChild(slice);
+  }
+
+  wave.classList.add('is-sliced');
+})();
 </script>
 </body>
 </html>
