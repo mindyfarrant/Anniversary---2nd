@@ -558,19 +558,23 @@ body.letter-open .letter-cover{
   filter:drop-shadow(0 4px 6px #0007);
 }
 
-    /* Kilau emas pada lipatan tutup amplop */
+    /* Kilau gold foil pada tutup amplop */
 .envelope-flap::after{
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(
-    135deg,
-    #f8e5b455 0%,
-    transparent 38%,
-    #d8b56d22 70%,
-    transparent 100%
-  );
+  background:
+    linear-gradient(
+      135deg,
+      #fff0bd99 0%,
+      #d8b56d55 22%,
+      transparent 42%,
+      #e9ca8555 65%,
+      #fff0bd88 82%,
+      transparent 100%
+    );
   clip-path:polygon(0 0,100% 0,50% 58%);
+  border:1px solid #e8c979;
   pointer-events:none;
 }
     
