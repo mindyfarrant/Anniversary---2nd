@@ -508,6 +508,34 @@ body.letter-open .letter-cover{
   transition:transform 1s ease;
   backface-visibility:visible;
 }
+    /* Tombol hati untuk membuka surat */
+.heart-button{
+  position:relative;
+  z-index:6;
+  width:85px;
+  height:85px;
+  border:none;
+  background:transparent;
+  cursor:pointer;
+  display:grid;
+  place-items:center;
+  margin:10px auto;
+  animation:heartBeat 1.8s ease-in-out infinite;
+}
+
+.heart-button span{
+  font-size:65px;
+  color:#e5bd70;
+  text-shadow:
+    0 0 8px #f3dfaa,
+    0 0 20px #d8b56d99,
+    0 0 35px #d8b56d55;
+}
+
+@keyframes heartBeat{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.12)}
+}
 
 .wax-seal{
   position:absolute;
@@ -757,8 +785,8 @@ body.letter-open .letter-cover{
         Ada sesuatu yang ingin kusampaikan...
       </p>
 
-      <button class="btn" id="openLetter">
-        ♡ Baca Pesan Cinta ♡
+      <button class="heart-button" id="openLetter">
+  <span>♥</span>
       </button>
     </div>
   </div>
