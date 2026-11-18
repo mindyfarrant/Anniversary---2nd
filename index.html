@@ -16,6 +16,55 @@
     body{margin:0;background:var(--navy);color:var(--cream);font-family:Georgia,'Times New Roman',serif;overflow-x:hidden}
     body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;background:radial-gradient(circle at 15% 18%,#b88b47 0 1px,transparent 2px),radial-gradient(circle at 80% 35%,#f4dca4 0 1px,transparent 2px),radial-gradient(circle at 65% 82%,#b88b47 0 1px,transparent 2px);background-size:190px 190px,240px 240px,280px 280px}
     .wrap{width:min(1100px,92%);margin:auto}
+
+    
+/* Pita emas Happy Wedding Anniversary */
+.anniversary-ribbon{
+  position:relative;
+  width:min(650px,92%);
+  margin:35px auto;
+  text-align:center;
+  isolation:isolate;
+}
+
+.anniversary-ribbon::before,
+.anniversary-ribbon::after{
+  content:"";
+  position:absolute;
+  top:12px;
+  width:22%;
+  height:65px;
+  z-index:-1;
+  background:linear-gradient(90deg,#9b7027,#f3dfaa,#c18d35);
+}
+
+.anniversary-ribbon::before{
+  left:-5%;
+  clip-path:polygon(0 0,100% 15%,100% 75%,0 100%,18% 50%);
+}
+
+.anniversary-ribbon::after{
+  right:-5%;
+  clip-path:polygon(0 15%,100% 0,82% 50%,100% 100%,0 75%);
+}
+
+.anniversary-ribbon span{
+  display:block;
+  position:relative;
+  padding:22px 12px;
+  background:linear-gradient(180deg,#fff0a8 0%,#e9bd50 25%,#c18b27 55%,#f5d875 80%,#b77b20 100%);
+  color:#172033;
+  font-family:Georgia,serif;
+  font-size:clamp(17px,4.5vw,29px);
+  font-weight:bold;
+  letter-spacing:2px;
+  line-height:1.4;
+  border:1px solid #ffe8a0;
+  border-radius:5px 5px 35% 35% / 5px 5px 12% 12%;
+  box-shadow:0 5px 12px #0006,inset 0 2px 5px #fff9b5,inset 0 -4px 7px #80551c88;
+  text-shadow:0 1px 1px #fff2bd;
+}
+    
 /* Hujan love biru aqua */
 .love-rain{
   position:fixed;
@@ -935,7 +984,9 @@ body.letter-open .letter-cover{
       <div class="frame">
         <div class="eyebrow">A celebration of love</div>
         <div class="ornament">✧ ✦ ✧</div>
-        <h1>Happy Wedding<span>Anniversary</span></h1>
+        <div class="anniversary-ribbon">
+  <span>HAPPY WEDDING ANNIVERSARY</span>
+        </div>
         <p class="intro">Hari ini, kita merayakan bukan hanya waktu yang telah berlalu, tetapi juga setiap tawa, doa, pelukan, dan hal sederhana yang membuat perjalanan ini begitu berarti.</p>
         <div class="names" id="coupleNames">Dua hati, satu perjalanan dan satu tujuan</div>
         <div class="date" id="anniversaryDate">Our beautiful story continues</div>
