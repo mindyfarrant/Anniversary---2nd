@@ -19,44 +19,7 @@
     }
 
 
-  /*Anniversary pita */
-.anniversary-ribbon{
-  position:relative;
-  width:min(520px,88%);
-  margin:20px auto;
-  text-align:center;
-  isolation:isolate;
-  animation:ribbonBreeze 4s ease-in-out infinite;
-}
-
-/* Ekor pita */
-.anniversary-ribbon::before,
-.anniversary-ribbon::after{
-  content:"";
-  position:absolute;
-  top:4px;
-width:22%;
-height:58px;
-  z-index:0;
-pointer-events:none;
-  background:linear-gradient(180deg,
-    #f3dfaa 0%,#d8ad4d 25%,#80551c 48%,#c18d35 62%,#f3dfaa 100%);
-  will-change:transform;
-}
-.anniversary-ribbon::before{
-  left:-7%;
-  clip-path:polygon(100% 0,0 12%,18% 50%,0 88%,100% 100%,100% 68%,72% 50%,100% 32%);
-  transform-origin:right center;
-  animation:tailLeft 3.6s ease-in-out infinite;
-}
-.anniversary-ribbon::after{
-  right:-7%;
-  clip-path:polygon(0 0,100% 12%,82% 50%,100% 88%,0 100%,0 68%,28% 50%,0 32%);
-  transform-origin:left center;
-  animation:tailRight 3.6s ease-in-out infinite .6s;
-}
-
-/* Badan pita */
+  
 .ribbon-wave{
     position:relative;
   z-index:1;
@@ -231,55 +194,142 @@ animation: ribbonSatin 3.5s ease-in-out infinite,
            satinShimmer 5s ease-in-out infinite;
 }
 
-/* Gerakan badan pita */
-@keyframes ribbonBreeze {
-  0%, 100% {
-    transform: translateY(0) rotate(-1deg);
-  }
-  50% {
-    transform: translateY(-4px) rotate(1deg);
-  }
+
+/* ANNIVERSARY RIBBON */
+.anniversary-ribbon {
+  position: relative;
+  width: min(520px, 88%);
+  margin: 20px auto;
+  text-align: center;
+  isolation: isolate;
+  animation: ribbonBreeze 4s ease-in-out infinite;
 }
 
-/* Gerakan ekor kiri */
-@keyframes ribbonLeft {
-  0%, 100% {
-    transform: perspective(500px) rotateY(0) rotate(4deg) skewY(0);
-  }
-  50% {
-    transform: perspective(500px) rotateY(28deg) rotate(-7deg) skewY(5deg);
-  }
+/* Ekor pita */
+.anniversary-ribbon::before,
+.anniversary-ribbon::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  width: 22%;
+  height: 48px;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    #f3dfaa 0%,
+    #d8ad4d 25%,
+    #80551c 48%,
+    #c18d35 62%,
+    #f3dfaa 100%
+  );
 }
 
-/* Gerakan ekor kanan */
-@keyframes ribbonRight {
-  0%, 100% {
-    transform: perspective(500px) rotateY(0) rotate(-4deg) skewY(0);
-  }
-  50% {
-    transform: perspective(500px) rotateY(-28deg) rotate(7deg) skewY(-5deg);
-  }
+.anniversary-ribbon::before {
+  left: -7%;
+  clip-path: polygon(
+    100% 0, 0 12%, 18% 50%, 0 88%,
+    100% 100%, 100% 68%, 72% 50%, 100% 32%
+  );
+  transform-origin: right center;
+  animation: ribbonLeft 3.6s ease-in-out infinite;
 }
 
-/* Kilau dan liukan satin */
-@keyframes ribbonSatin {
-  0%, 100% {
-    transform: perspective(700px) rotateY(-3deg) rotateX(1deg) skewY(-1deg);
-    background-position: 0% 50%, 0% 50%;
-  }
-  25% {
-    transform: perspective(700px) rotateY(0deg) rotateX(-1deg) skewY(0.5deg);
-  }
-  50% {
-    transform: perspective(700px) rotateY(3deg) rotateX(1deg) skewY(1deg);
-    background-position: 100% 50%, 0% 50%;
-  }
-  75% {
-    transform: perspective(700px) rotateY(0deg) rotateX(-1deg) skewY(-0.5deg);
-  }
+.anniversary-ribbon::after {
+  right: -7%;
+  clip-path: polygon(
+    0 0, 100% 12%, 82% 50%, 100% 88%,
+    0 100%, 0 68%, 28% 50%, 0 32%
+  );
+  transform-origin: left center;
+  animation: ribbonRight 3.6s ease-in-out infinite .6s;
 }
 
-    @keyframes softWave {
+/* Badan pita */
+.ribbon-wave {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 86%;
+  height: 48px;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+/* Potongan pita */
+.ribbon-wave.is-sliced .ribbon-slice {
+  position: relative;
+  flex: 0 0 8.333333%;
+  width: 8.333333%;
+  height: 48px;
+  min-width: 0;
+  overflow: hidden;
+  transform-origin: center;
+  animation: softWave 3.6s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Permukaan satin */
+.ribbon-face {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px 5px;
+  box-sizing: border-box;
+  white-space: nowrap;
+
+  color: #172033;
+  font-family: Georgia, serif;
+  font-size: clamp(12px, 3.5vw, 22px);
+  font-weight: bold;
+  letter-spacing: 1px;
+  line-height: 1.3;
+  text-align: center;
+
+  background:
+    linear-gradient(
+      105deg,
+      transparent 0%,
+      #fff8d977 15%,
+      #8b5b1c55 28%,
+      transparent 42%,
+      #fffbe099 55%,
+      #a66d1955 70%,
+      transparent 85%
+    ),
+    linear-gradient(
+      180deg,
+      #fff8df 0%,
+      #f8e2a2 15%,
+      #d6aa4d 32%,
+      #fff0bd 48%,
+      #b77b25 65%,
+      #f4d88c 82%,
+      #fff4d0 100%
+    );
+
+  border: 1px solid #ffe8a0;
+  border-radius: 5px;
+  box-shadow:
+    inset 0 3px 5px #fffbd0,
+    inset 0 -5px 9px #70420c,
+    inset 35px 0 25px #fff2,
+    inset -35px 0 25px #5c350b55;
+
+  text-shadow: 0 1px 1px #fff2bd;
+}
+
+/* Lebar permukaan di setiap potongan */
+.ribbon-slice .ribbon-face {
+  width: 1200%;
+  max-width: none;
+  margin-top: 0;
+  white-space: nowrap;
+}
+
+/* Animasi badan pita */
+@keyframes softWave {
   0%, 100% {
     transform: translateY(0) skewY(3deg);
   }
@@ -292,18 +342,36 @@ animation: ribbonSatin 3.5s ease-in-out infinite,
   75% {
     transform: translateY(-3px) skewY(-1deg);
   }
-    }
+}
 
-    @keyframes satinShimmer {
+/* Gerakan ekor */
+@keyframes ribbonBreeze {
   0%, 100% {
-    background-position: 0% 50%, 0% 50%;
+    transform: translateY(0) rotate(-.5deg);
   }
   50% {
-    background-position: 100% 50%, 0% 50%;
+    transform: translateY(-2px) rotate(.5deg);
   }
-    }
+}
 
-    
+@keyframes ribbonLeft {
+  0%, 100% {
+    transform: perspective(500px) rotateY(0) rotate(4deg);
+  }
+  50% {
+    transform: perspective(500px) rotateY(28deg) rotate(-7deg);
+  }
+}
+
+@keyframes ribbonRight {
+  0%, 100% {
+    transform: perspective(500px) rotateY(0) rotate(-4deg);
+  }
+  50% {
+    transform: perspective(500px) rotateY(-28deg) rotate(7deg);
+  }
+}
+
     
 /* Hujan love biru aqua */
 .love-rain{
@@ -1597,12 +1665,16 @@ if (rosePetals) {
   }, 500);
 }
   
+
 // Animasi pita satin yang meliuk dari kiri ke kanan
 (function () {
   const wave = document.querySelector('.ribbon-wave');
   if (!wave) return;
 
-  const text = wave.querySelector('.ribbon-face')?.textContent.trim();
+  const originalFace = wave.querySelector('.ribbon-face');
+  if (!originalFace) return;
+
+  const text = originalFace.textContent.trim();
   if (!text) return;
 
   const total = 12;
@@ -1612,7 +1684,8 @@ if (rosePetals) {
     const slice = document.createElement('div');
     slice.className = 'ribbon-slice';
 
-    slice.style.animationDelay = (-i * 3.6 / total) + 's';
+    // Gelombang bergerak dari kiri ke kanan
+    slice.style.animationDelay = (i * -3.6 / total) + 's';
 
     const face = document.createElement('span');
     face.className = 'ribbon-face';
@@ -1626,6 +1699,7 @@ if (rosePetals) {
 
   wave.classList.add('is-sliced');
 })();
+
 </script>
 </body>
 </html>
