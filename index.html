@@ -343,32 +343,60 @@ body.letter-open .letter-cover{
 }
     
 /* Animasi kelopak bunga mawar */
-.rose-petals{
-  position:absolute;
-  inset:0;
-  z-index:8;
-  overflow:hidden;
-  pointer-events:none;
-}
-
 .rose-petal{
   position:absolute;
-  width:15px;
-  height:21px;
-  border-radius:100% 0 100% 0;
-  background:linear-gradient(135deg,#ff8b9b,#c20d36 65%,#72051f);
-  box-shadow:0 2px 8px #ff547455;
+  width:18px;
+  height:25px;
+  border-radius:75% 15% 65% 25%;
+  background:
+    radial-gradient(ellipse at 35% 25%,
+      #ffb0b9 0%,
+      #ed526c 22%,
+      #c20d36 55%,
+      #790d29 100%);
+  box-shadow:
+    inset 2px 1px 3px #ffd0d455,
+    inset -3px -2px 5px #58001866,
+    0 2px 7px #0005;
   opacity:0;
+  transform-origin:center;
   animation:roseBurst 3.2s ease-out forwards;
 }
+    
+    .rose-petal::after{
+  content:"";
+  position:absolute;
+  left:48%;
+  top:12%;
+  width:1px;
+  height:76%;
+  background:linear-gradient(
+    to bottom,
+    #ffd9df88,
+    #fff0f055,
+    #7b102b55
+  );
+  border-radius:50%;
+  transform:rotate(8deg);
+    }
 
 @keyframes roseBurst{
   0%{
     opacity:0;
     transform:translate(-50%,-50%) scale(.3) rotate(0deg);
   }
-  15%{
+  12%{
     opacity:1;
+  }
+  45%{
+    opacity:1;
+    transform:
+      translate(
+        calc(-50% + var(--fly-x) * .55),
+        calc(-50% + var(--fly-y) * .55)
+      )
+      rotate(calc(var(--spin) * .55))
+      scale(1.15, .9);
   }
   100%{
     opacity:0;
@@ -378,7 +406,7 @@ body.letter-open .letter-cover{
         calc(-50% + var(--fly-y))
       )
       rotate(var(--spin))
-      scale(.85);
+      scale(.75, 1.1);
   }
 }
 .envelope-content{
