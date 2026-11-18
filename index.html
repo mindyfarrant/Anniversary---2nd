@@ -523,29 +523,39 @@ body.letter-open .letter-cover{
   inset:0;
   z-index:3;
   background:
-    linear-gradient(145deg,#244665,#102b49 55%,#081a30);
+    linear-gradient(145deg,
+      #315675 0%,
+      #173653 35%,
+      #0b2039 70%,
+      #07182c 100%);
   clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%);
   border-bottom:1px solid #d8b56d;
-  box-shadow:inset 0 0 18px #d8b56d22;
+  filter:drop-shadow(0 5px 5px #0008);
+  box-shadow:inset 0 0 18px #d8b56d33;
 }
 
 .envelope-flap{
   position:absolute;
   inset:0;
   z-index:4;
-  background:linear-gradient(
-    160deg,
-    #315675 0%,
-    #173653 55%,
-    #0a2038 100%
-  );
+  background:
+    radial-gradient(
+      ellipse at 50% 5%,
+      #52718a55,
+      transparent 65%
+    ),
+    linear-gradient(
+      160deg,
+      #315675 0%,
+      #173653 55%,
+      #0a2038 100%
+    );
   clip-path:polygon(0 0,100% 0,50% 58%);
   transform-origin:top center;
   transition:transform 1s ease;
   backface-visibility:visible;
-  filter:drop-shadow(0 3px 4px #0005);
-    transform-style:preserve-3d;
-  box-shadow:0 5px 12px #0005;
+  transform-style:preserve-3d;
+  filter:drop-shadow(0 4px 6px #0007);
 }
     
     /* Tombol hati untuk membuka surat */
