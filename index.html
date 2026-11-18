@@ -64,6 +64,39 @@
   box-shadow:0 5px 12px #0006,inset 0 2px 5px #fff9b5,inset 0 -4px 7px #80551c88;
   text-shadow:0 1px 1px #fff2bd;
 }
+
+    
+/* Animasi pita berkibar lembut */
+.anniversary-ribbon{
+  transform-origin:center;
+  animation:ribbonBreeze 4.5s ease-in-out infinite;
+}
+
+.anniversary-ribbon::before{
+  transform-origin:right center;
+  animation:ribbonLeft 3.2s ease-in-out infinite;
+}
+
+.anniversary-ribbon::after{
+  transform-origin:left center;
+  animation:ribbonRight 3.6s ease-in-out infinite;
+}
+
+@keyframes ribbonBreeze{
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  50%{transform:translateY(-4px) rotate(.5deg)}
+}
+
+@keyframes ribbonLeft{
+  0%,100%{transform:rotate(0deg)}
+  50%{transform:rotate(-3deg)}
+}
+
+@keyframes ribbonRight{
+  0%,100%{transform:rotate(0deg)}
+  50%{transform:rotate(3deg)}
+}
+    
     
 /* Hujan love biru aqua */
 .love-rain{
