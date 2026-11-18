@@ -17,104 +17,93 @@
     body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;background:radial-gradient(circle at 15% 18%,#b88b47 0 1px,transparent 2px),radial-gradient(circle at 80% 35%,#f4dca4 0 1px,transparent 2px),radial-gradient(circle at 65% 82%,#b88b47 0 1px,transparent 2px);background-size:190px 190px,240px 240px,280px 280px}
     .wrap{width:min(1100px,92%);margin:auto}
     }
-
+  
 
 /* ANNIVERSARY RIBBON */
 .anniversary-ribbon {
   position: relative;
   width: min(420px, 78%);
-  margin: 14px auto;
-  text-align: center;
+  margin: 16px auto;
   isolation: isolate;
-  animation: ribbonBreeze 4s ease-in-out infinite;
+  text-align: center;
 }
 
-/* Ekor pita kiri dan kanan */
+/* Ekor kiri dan kanan */
 .anniversary-ribbon::before,
 .anniversary-ribbon::after {
   content: "";
   position: absolute;
   top: 3px;
-  width: 20%;
-  height: 40px;
+  width: 18%;
+  height: 42px;
   z-index: 0;
   pointer-events: none;
   background: linear-gradient(
     180deg,
-    #fff0bd,
+    #fff4d0,
     #d8ad4d 35%,
-    #93631f 65%,
+    #95631e 60%,
     #f3dfaa
   );
 }
 
 .anniversary-ribbon::before {
-  left: 1%;
-  clip-path: polygon(
-    100% 0, 0 15%, 20% 50%,
-    0 85%, 100% 100%
-  );
-  animation: ribbonLeft 3.6s ease-in-out infinite;
+  left: 0;
+  clip-path: polygon(100% 0, 0 15%, 22% 50%, 0 85%, 100% 100%);
+  transform-origin: right center;
+  animation: ribbonLeft 3.5s ease-in-out infinite;
 }
 
 .anniversary-ribbon::after {
-  right: 1%;
-  clip-path: polygon(
-    0 0, 100% 15%, 80% 50%,
-    100% 85%, 0 100%
-  );
-  animation: ribbonRight 3.6s ease-in-out infinite;
+  right: 0;
+  clip-path: polygon(0 0, 100% 15%, 78% 50%, 100% 85%, 0 100%);
+  transform-origin: left center;
+  animation: ribbonRight 3.5s ease-in-out infinite;
 }
 
-/* Badan pita utuh */
+/* Badan pita satin utuh */
 .ribbon-wave {
   position: relative;
   z-index: 1;
-  display: block;
   width: 88%;
-  height: 42px;
   margin: 0 auto;
   overflow: visible;
+  perspective: 600px;
 }
 
-/* Permukaan satin */
 .ribbon-face {
-  position: relative;
   display: block;
   width: 100%;
-  margin: 0 auto;
-  padding: 8px 4px;
   box-sizing: border-box;
-  white-space: nowrap;
+  padding: 8px 4px;
+  margin: 0 auto;
 
   color: #172033;
   font-family: Georgia, serif;
-  font-size: clamp(10px, 2.7vw, 17px);
+  font-size: clamp(10px, 2.8vw, 17px);
   font-weight: bold;
   letter-spacing: 1px;
-  line-height: 1.3;
+  line-height: 1.4;
   text-align: center;
+  white-space: nowrap;
 
   background:
     linear-gradient(
       105deg,
       transparent 0%,
-      #fff8d977 15%,
-      #8b5b1c55 28%,
-      transparent 42%,
-      #fffbe099 55%,
-      #a66d1955 70%,
+      #fff8d977 20%,
+      #8b5b1c55 35%,
+      transparent 50%,
+      #fffbe099 65%,
       transparent 85%
     ),
     linear-gradient(
       180deg,
-      #fff8df 0%,
-      #f8e2a2 15%,
-      #d6aa4d 32%,
-      #fff0bd 48%,
-      #b77b25 65%,
-      #f4d88c 82%,
-      #fff4d0 100%
+      #fff8df,
+      #f8e2a2 25%,
+      #d6aa4d 50%,
+      #b77b25 70%,
+      #fff4d0
     );
 
   border: 1px solid #ffe8a0;
@@ -123,53 +112,44 @@
   box-shadow:
     inset 0 3px 5px #fffbd0,
     inset 0 -5px 9px #70420c,
-    inset 25px 0 20px #fff2,
-    inset -25px 0 20px #5c350b55;
+    0 3px 8px #0002;
 
   text-shadow: 0 1px 1px #fff2bd;
 
-  animation: softWave 4s ease-in-out infinite;
+  transform-origin: center;
+  animation: ribbonWave 3.5s ease-in-out infinite;
 }
 
-/* Gerakan lembut badan pita */
-@keyframes softWave {
+/* Gelombang lembut pada badan pita */
+@keyframes ribbonWave {
   0%, 100% {
-    transform: translateY(0) skewY(1deg);
+    transform: perspective(600px) rotateY(-3deg) skewY(1deg);
   }
   50% {
-    transform: translateY(-2px) skewY(-1deg);
-  }
-}
-
-/* Gerakan seluruh pita */
-@keyframes ribbonBreeze {
-  0%, 100% {
-    transform: translateY(0) rotate(-.3deg);
-  }
-  50% {
-    transform: translateY(-2px) rotate(.3deg);
+    transform: perspective(600px) rotateY(3deg) skewY(-1deg);
   }
 }
 
 /* Gerakan ekor kiri */
 @keyframes ribbonLeft {
   0%, 100% {
-    transform: perspective(500px) rotateY(0) rotate(3deg);
+    transform: perspective(500px) rotateY(0deg) rotate(3deg);
   }
   50% {
-    transform: perspective(500px) rotateY(18deg) rotate(-4deg);
+    transform: perspective(500px) rotateY(22deg) rotate(-5deg);
   }
 }
 
 /* Gerakan ekor kanan */
 @keyframes ribbonRight {
   0%, 100% {
-    transform: perspective(500px) rotateY(0) rotate(-3deg);
+    transform: perspective(500px) rotateY(0deg) rotate(-3deg);
   }
   50% {
-    transform: perspective(500px) rotateY(-18deg) rotate(4deg);
+    transform: perspective(500px) rotateY(-22deg) rotate(5deg);
   }
 }
+    
     
     
 /* Hujan love biru aqua */
@@ -1464,40 +1444,6 @@ if (rosePetals) {
   }, 500);
 }
   
-
-// Animasi pita satin yang meliuk dari kiri ke kanan
-(function () {
-  const wave = document.querySelector('.ribbon-wave');
-  if (!wave) return;
-
-  const originalFace = wave.querySelector('.ribbon-face');
-  if (!originalFace) return;
-
-  const text = originalFace.textContent.trim();
-  if (!text) return;
-
-  const total = 12;
-  wave.innerHTML = '';
-
-  for (let i = 0; i < total; i++) {
-    const slice = document.createElement('div');
-    slice.className = 'ribbon-slice';
-
-    // Gelombang bergerak dari kiri ke kanan
-    slice.style.animationDelay = (i * -3.6 / total) + 's';
-
-    const face = document.createElement('span');
-    face.className = 'ribbon-face';
-    face.textContent = text;
-    face.style.width = (total * 100) + '%';
-    face.style.marginLeft = (-i * 100) + '%';
-
-    slice.appendChild(face);
-    wave.appendChild(slice);
-  }
-
-  wave.classList.add('is-sliced');
-})();
 
 </script>
 </body>
