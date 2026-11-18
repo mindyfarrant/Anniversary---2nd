@@ -322,6 +322,14 @@
   transition:opacity 1s ease,visibility 1s ease;
 }
 
+    .rose-petals{
+  position:absolute;
+  inset:0;
+  z-index:8;
+  overflow:visible;
+  pointer-events:none;
+    }
+
 body:not(.letter-open) main{
   visibility:hidden;
 }
@@ -385,19 +393,22 @@ body.letter-open .letter-cover{
     opacity:0;
     transform:translate(-50%,-50%) scale(.3) rotate(0deg);
   }
+
   12%{
     opacity:1;
   }
+
   45%{
     opacity:1;
     transform:
       translate(
-        calc(-50% + var(--fly-x) * .55),
-        calc(-50% + var(--fly-y) * .55)
+        calc(-50% + var(--fly-x)),
+        calc(-50% + var(--fly-y))
       )
-      rotate(calc(var(--spin) * .55))
-      scale(1.15, .9);
+      rotate(var(--spin))
+      scale(1.15,.9);
   }
+
   100%{
     opacity:0;
     transform:
@@ -406,9 +417,10 @@ body.letter-open .letter-cover{
         calc(-50% + var(--fly-y))
       )
       rotate(var(--spin))
-      scale(.75, 1.1);
+      scale(.75,1.1);
   }
 }
+
 .envelope-content{
   width:100%;
   max-width:420px;
@@ -858,7 +870,7 @@ body.letter-open .letter-cover{
       <div class="eyebrow">With all my love</div><div class="ornament">✦</div>
       <h2>Masih kamu. Selalu kamu.</h2>
       <p>Untuk hari ini, untuk hari esok, dan untuk semua cerita yang belum kita tulis. Terima kasih sudah berjalan bersamaku.</p>
-      <div class="signature">Forever yours ♡</div>
+      <div class="signature">Forever us ♡</div>
     </section>
     <section class="secret-letter-section">
   <div class="section-head">
@@ -1080,33 +1092,38 @@ const closingObserver = new IntersectionObserver((entries) => {
 
 closingObserver.observe(closingSection);
 
-  // Efek kelopak mawar terhempas saat amplop muncul
+  // Efek kelopak mawar menyebar ke segala arah
 const rosePetals = document.getElementById('rosePetals');
 
 if (rosePetals) {
   setTimeout(() => {
-    for (let i = 0; i < 45; i++) {
+    const envelope = document.getElementById('envelope');
+    const envelopeRect = envelope.getBoundingClientRect();
+    const coverRect = rosePetals.getBoundingClientRect();
+
+    const centerX = envelopeRect.left + envelopeRect.width / 2 - coverRect.left;
+    const centerY = envelopeRect.top + envelopeRect.height / 2 - coverRect.top;
+
+    for (let i = 0; i < 60; i++) {
       const petal = document.createElement('span');
-
       petal.className = 'rose-petal';
-      const envelopeRect = document.getElementById('envelope').getBoundingClientRect();
-const coverRect = rosePetals.getBoundingClientRect();
 
-petal.style.left = (envelopeRect.left + envelopeRect.width / 2 - coverRect.left) + 'px';
-petal.style.top = (envelopeRect.top + envelopeRect.height / 2 - coverRect.top) + 'px';
-      const angle = (i / 45) * Math.PI * 2 + (Math.random() - 0.5) * 0.35;
-const distance = 180 + Math.random() * 220;
-      
+      petal.style.left = centerX + 'px';
+      petal.style.top = centerY + 'px';
+
+      const angle = (i / 60) * Math.PI * 2;
+      const distance = 180 + Math.random() * 250;
+
       const x = Math.cos(angle) * distance;
       const y = Math.sin(angle) * distance;
 
       petal.style.setProperty('--fly-x', x + 'px');
       petal.style.setProperty('--fly-y', y + 'px');
-      petal.style.setProperty('--spin', (Math.random() * 900 - 450) + 'deg');
+      petal.style.setProperty('--spin', (Math.random() * 1080 - 540) + 'deg');
 
-      petal.style.width = (12 + Math.random() * 10) + 'px';
-      petal.style.height = (17 + Math.random() * 12) + 'px';
-      petal.style.animationDelay = (Math.random() * 0.35) + 's';
+      petal.style.width = (12 + Math.random() * 12) + 'px';
+      petal.style.height = (18 + Math.random() * 14) + 'px';
+      petal.style.animationDelay = (Math.random() * 0.4) + 's';
 
       rosePetals.appendChild(petal);
 
