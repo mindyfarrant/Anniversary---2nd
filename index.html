@@ -22,81 +22,74 @@
 /* ANNIVERSARY RIBBON */
 .anniversary-ribbon {
   position: relative;
-  width: min(520px, 88%);
-  margin: 20px auto;
+  width: min(420px, 78%);
+  margin: 14px auto;
   text-align: center;
   isolation: isolate;
   animation: ribbonBreeze 4s ease-in-out infinite;
 }
 
-/* Ekor pita */
+/* Ekor pita kiri dan kanan */
 .anniversary-ribbon::before,
 .anniversary-ribbon::after {
   content: "";
   position: absolute;
-  top: 4px;
-  width: 22%;
-  height: 48px;
+  top: 3px;
+  width: 20%;
+  height: 40px;
   z-index: 0;
   pointer-events: none;
   background: linear-gradient(
     180deg,
-    #f3dfaa 0%,
-    #d8ad4d 25%,
-    #80551c 48%,
-    #c18d35 62%,
-    #f3dfaa 100%
+    #fff0bd,
+    #d8ad4d 35%,
+    #93631f 65%,
+    #f3dfaa
   );
 }
 
 .anniversary-ribbon::before {
-  left: -7%;
+  left: 1%;
   clip-path: polygon(
-    100% 0, 0 12%, 18% 50%, 0 88%,
-    100% 100%, 100% 68%, 72% 50%, 100% 32%
+    100% 0, 0 15%, 20% 50%,
+    0 85%, 100% 100%
   );
-  transform-origin: right center;
   animation: ribbonLeft 3.6s ease-in-out infinite;
 }
 
 .anniversary-ribbon::after {
-  right: -7%;
+  right: 1%;
   clip-path: polygon(
-    0 0, 100% 12%, 82% 50%, 100% 88%,
-    0 100%, 0 68%, 28% 50%, 0 32%
+    0 0, 100% 15%, 80% 50%,
+    100% 85%, 0 100%
   );
-  transform-origin: left center;
-  animation: ribbonRight 3.6s ease-in-out infinite .6s;
+  animation: ribbonRight 3.6s ease-in-out infinite;
 }
 
-/* Badan pita */
-
+/* Badan pita utuh */
 .ribbon-wave {
   position: relative;
   z-index: 1;
   display: block;
-  width: 86%;
-  height: 48px;
+  width: 88%;
+  height: 42px;
   margin: 0 auto;
   overflow: visible;
 }
-
-
 
 /* Permukaan satin */
 .ribbon-face {
   position: relative;
   display: block;
   width: 100%;
-margin: 0 auto;
-display: block;
-  padding: 10px 5px;
+  margin: 0 auto;
+  padding: 8px 4px;
   box-sizing: border-box;
   white-space: nowrap;
 
   color: #172033;
   font-family: Georgia, serif;
-  font-size: clamp(12px, 3.5vw, 22px);
+  font-size: clamp(10px, 2.7vw, 17px);
   font-weight: bold;
   letter-spacing: 1px;
   line-height: 1.3;
@@ -125,61 +118,59 @@ display: block;
     );
 
   border: 1px solid #ffe8a0;
-  border-radius: 5px;
+  border-radius: 4px;
+
   box-shadow:
     inset 0 3px 5px #fffbd0,
     inset 0 -5px 9px #70420c,
-    inset 35px 0 25px #fff2,
-    inset -35px 0 25px #5c350b55;
+    inset 25px 0 20px #fff2,
+    inset -25px 0 20px #5c350b55;
 
   text-shadow: 0 1px 1px #fff2bd;
+
+  animation: softWave 4s ease-in-out infinite;
 }
 
-
-/* Animasi badan pita */
+/* Gerakan lembut badan pita */
 @keyframes softWave {
   0%, 100% {
-    transform: translateY(0) skewY(3deg);
-  }
-  25% {
-    transform: translateY(3px) skewY(1deg);
+    transform: translateY(0) skewY(1deg);
   }
   50% {
-    transform: translateY(0) skewY(-3deg);
-  }
-  75% {
-    transform: translateY(-3px) skewY(-1deg);
+    transform: translateY(-2px) skewY(-1deg);
   }
 }
 
-/* Gerakan ekor */
+/* Gerakan seluruh pita */
 @keyframes ribbonBreeze {
   0%, 100% {
-    transform: translateY(0) rotate(-.5deg);
+    transform: translateY(0) rotate(-.3deg);
   }
   50% {
-    transform: translateY(-2px) rotate(.5deg);
+    transform: translateY(-2px) rotate(.3deg);
   }
 }
 
+/* Gerakan ekor kiri */
 @keyframes ribbonLeft {
   0%, 100% {
-    transform: perspective(500px) rotateY(0) rotate(4deg);
+    transform: perspective(500px) rotateY(0) rotate(3deg);
   }
   50% {
-    transform: perspective(500px) rotateY(28deg) rotate(-7deg);
+    transform: perspective(500px) rotateY(18deg) rotate(-4deg);
   }
 }
 
+/* Gerakan ekor kanan */
 @keyframes ribbonRight {
   0%, 100% {
-    transform: perspective(500px) rotateY(0) rotate(-4deg);
+    transform: perspective(500px) rotateY(0) rotate(-3deg);
   }
   50% {
-    transform: perspective(500px) rotateY(-28deg) rotate(7deg);
+    transform: perspective(500px) rotateY(-18deg) rotate(4deg);
   }
 }
-
+    
     
 /* Hujan love biru aqua */
 .love-rain{
