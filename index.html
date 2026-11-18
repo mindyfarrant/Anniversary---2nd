@@ -234,12 +234,18 @@ animation: ribbonSatin 3.5s ease-in-out infinite,
 /* Kilau dan liukan satin */
 @keyframes ribbonSatin {
   0%, 100% {
-    transform: perspective(700px) rotateY(-2deg) skewY(-0.5deg);
-    background-position: 0% 50%;
+    transform: perspective(700px) rotateY(-3deg) rotateX(1deg) skewY(-1deg);
+    background-position: 0% 50%, 0% 50%;
+  }
+  25% {
+    transform: perspective(700px) rotateY(0deg) rotateX(-1deg) skewY(0.5deg);
   }
   50% {
-    transform: perspective(700px) rotateY(2deg) skewY(0.5deg);
-    background-position: 100% 50%;
+    transform: perspective(700px) rotateY(3deg) rotateX(1deg) skewY(1deg);
+    background-position: 100% 50%, 0% 50%;
+  }
+  75% {
+    transform: perspective(700px) rotateY(0deg) rotateX(-1deg) skewY(-0.5deg);
   }
 }
 
