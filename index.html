@@ -117,16 +117,22 @@ height: 34px;
   text-shadow: 0 1px 1px #fff2bd;
 
   transform-origin: center;
-  animation: ribbonWave 3.5s ease-in-out infinite;
+  animation: ribbonWave 5s ease-in-out infinite;
 }
 
 /* Gelombang lembut pada badan pita */
 @keyframes ribbonWave {
   0%, 100% {
-    transform: perspective(600px) rotateY(-3deg) skewY(1deg);
+    transform: perspective(600px) rotateY(-5deg) skewY(1deg);
+  }
+  25% {
+    transform: perspective(600px) rotateY(12deg) skewY(-1deg);
   }
   50% {
-    transform: perspective(600px) rotateY(3deg) skewY(-1deg);
+    transform: perspective(600px) rotateY(0deg) skewY(1deg);
+  }
+  75% {
+    transform: perspective(600px) rotateY(-12deg) skewY(-1deg);
   }
 }
 
