@@ -1220,9 +1220,27 @@ body.letter-open .letter-cover{
   if (TANGGAL_ANNIVERSARY) document.getElementById('anniversaryDate').textContent = TANGGAL_ANNIVERSARY;
 
   // Lagu yang disediakan: letakkan file MP3 di public/music/.
-  const anniversaryAudio = new Audio('/public/music/Lana%20Del%20Rey%20-%20Young%20and%20Beautiful(MP3_160K).mp3');
+  const anniversaryAudio = new Audio('/music/Lana%20Del%20Rey%20-%20Young%20and%20Beautiful(MP3_160K).mp3');
   anniversaryAudio.loop = true;
   anniversaryAudio.volume = 0.65;
+  // Coba putar musik saat halaman dibuka
+async function startAnniversaryMusic() {
+  if (!anniversaryAudio.paused) return;
+
+  try {
+    await anniversaryAudio.play();
+    document.getElementById('musicBtn').textContent = 'Ⅱ Jeda musik';
+  } catch (error) {
+    // Browser mungkin memblokir autoplay.
+    // Musik akan dicoba lagi saat sentuhan pertama.
+  }
+}
+
+startAnniversaryMusic();
+
+document.addEventListener('pointerdown', startAnniversaryMusic, {
+  once: true
+});
 
   document.getElementById('musicBtn').addEventListener('click', async()=>{
     const btn=document.getElementById('musicBtn');
@@ -1357,14 +1375,6 @@ openLetterBtn.addEventListener('click', async () => {
 
   openLetterBtn.disabled = true;
   openLetterBtn.textContent = '♡ With all my love ♡';
-
-  try {
-    await anniversaryAudio.play();
-    musicBtn.textContent = 'Ⅱ Jeda musik';
-  } catch (error) {
-    musicBtn.textContent = '♫ Putar musik';
-    console.error('Audio tidak dapat diputar:', error);
-  }
 
   setTimeout(() => {
     document.body.classList.add('letter-open');
