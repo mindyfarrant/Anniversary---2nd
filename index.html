@@ -1,6 +1,22 @@
 <!doctype html>
 <html lang="id">
 <head>
+  <script>
+if (window.self !== window.top) {
+  // Hanya aktif saat kartu dibuka dari halaman pembuka
+  const orig = HTMLMediaElement.prototype.play;
+  HTMLMediaElement.prototype.play = function () {
+    this.muted = true;
+    this.volume = 0;
+    return orig.call(this);
+  };
+  document.addEventListener("DOMContentLoaded", () => {
+    const s = document.createElement("style");
+    s.textContent = ".music{display:none !important}";
+    document.head.appendChild(s);
+  });
+}
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
